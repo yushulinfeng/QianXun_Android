@@ -34,7 +34,7 @@ import com.szdd.qianxun.tools.connect.ConnectEasy;
 import com.szdd.qianxun.tools.connect.ConnectList;
 import com.szdd.qianxun.tools.connect.ConnectListener;
 import com.szdd.qianxun.tools.connect.ServerURL;
-import com.szdd.qianxun.tools.file.DealFile;
+import com.szdd.qianxun.tools.file.FileTool;
 import com.szdd.qianxun.tools.map.Location;
 import com.szdd.qianxun.tools.map.LocationListener;
 import com.szdd.qianxun.tools.top.TActivity;
@@ -44,7 +44,7 @@ import java.io.File;
 import java.util.Calendar;
 
 public class Register3 extends TActivity implements OnClickListener {
-    private final String[] context_items = new String[]{"相机拍照", "相册选取"};
+    private final String[] context_items = new String[]{"相机拍照", "相册选取", "默认头像"};
     private static final int CODE_ALBUM_START = 1;
     private static final int CODE_CAMERA_START = 2;
     private static final int CODE_CROP_START = 3;
@@ -152,6 +152,15 @@ public class Register3 extends TActivity implements OnClickListener {
                                 intent1.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                                 startActivityForResult(intent1, CODE_ALBUM_START);
                                 break;
+                            case 2:
+                                try {
+                                    saveBitmap(BitmapFactory.decodeResource(getResources(),
+                                            R.drawable.head_icon_default));
+                                    round_head.setImageResource(R.drawable.head_icon_default);// 用ImageView显示出来
+                                    ibtn_head.setImageResource(R.drawable.shape_null);
+                                } catch (Exception e) {
+                                }
+                                break;
                         }
                     }
                 }).create();
@@ -219,10 +228,14 @@ public class Register3 extends TActivity implements OnClickListener {
         name = et_name.getText().toString();
         if (!SafeCheck.checkNickName(this, name))
             return;
-        if (name.equals("000000")) {
+        location = et_location.getText().toString();
+        if (location == null || location.equals("")) {
+            showToast("请填写地区");
+            return;
+        }
+        if (phone.equals("00000000")) {
             showToast("测试账户");
             registerSuccess();
-            finish();
             return;
         }
 
@@ -255,15 +268,17 @@ public class Register3 extends TActivity implements OnClickListener {
                 } else if (response.equals("1")) {
                     registerSuccess();// 注册成功，自动登录
                 } else if (response.equals("-3")) {// 验证码错误-3
+                    setResult(Login.CODE_NEED_FINISH);
                     showToast("验证码错误");
                     Intent intent = new Intent(Register3.this, Register2.class);
                     startActivity(intent);
                     finish();
                 } else if (response.equals("-1")) {// 已注册（理论上不可能）-1
-                    showToast("用户已注册");
-                    Intent intent = new Intent(Register3.this, Register1.class);
-                    startActivity(intent);
-                    finish();
+                    ////注释该代码，防止点击两次
+//                    showToast("用户已注册");
+//                    Intent intent = new Intent(Register3.this, Register1.class);
+//                    startActivity(intent);
+//                    finish();
                 } else {
                     showToast("网络错误");
                 }
@@ -273,6 +288,7 @@ public class Register3 extends TActivity implements OnClickListener {
     }
 
     private void registerSuccess() {
+        setResult(Login.CODE_NEED_FINISH);
         // 保存本地记录
         AnBaseInfo info = new AnBaseInfo(phone, name, gender, birthday,
                 location, icon_path);
@@ -373,7 +389,6 @@ public class Register3 extends TActivity implements OnClickListener {
 
     public static Uri getTempUri() {//请确保GaoNeng文件夹存在
         return Uri.parse("file://" + "/" + Environment.getExternalStorageDirectory().getPath() + "/GaoNeng/" + "headIconTemp.jpg");
-
     }
 
     // 这个在后期修改头像时会用到
@@ -389,12 +404,12 @@ public class Register3 extends TActivity implements OnClickListener {
             return null;
         }
         File icon = new File(path, ICON_SD_NAME);
-        try {
-            if (icon.exists())
-                icon.delete();
-        } catch (Exception e) {
-            return null;
-        }
+//        try {//不能删除文件
+//            if (icon.exists())
+//                icon.delete();
+//        } catch (Exception e) {
+//            return null;
+//        }
         String icon_path0 = icon.getAbsolutePath();
         return icon_path0;
     }
@@ -422,7 +437,7 @@ public class Register3 extends TActivity implements OnClickListener {
      * 获取图像存储路径
      */
     public static File getMessageSDPath() {
-        File root = DealFile.getBaseSDCardPath();
+        File root = FileTool.getBaseSDCardPath();
         if (root == null)
             return null;
         File path = new File(root, MESSAGE_SD_PATH);

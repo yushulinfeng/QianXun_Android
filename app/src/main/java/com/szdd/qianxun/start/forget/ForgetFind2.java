@@ -1,4 +1,4 @@
-package com.szdd.qianxun.start.register;
+package com.szdd.qianxun.start.forget;
 
 import android.content.Intent;
 import android.view.MotionEvent;
@@ -12,20 +12,25 @@ import com.szdd.qianxun.R;
 import com.szdd.qianxun.start.check.UserExistTool;
 import com.szdd.qianxun.start.login.Login;
 import com.szdd.qianxun.start.tool.SafeCheck;
+import com.szdd.qianxun.tools.connect.ConnectDialog;
+import com.szdd.qianxun.tools.connect.ConnectEasy;
+import com.szdd.qianxun.tools.connect.ConnectList;
+import com.szdd.qianxun.tools.connect.ConnectListener;
+import com.szdd.qianxun.tools.connect.ServerURL;
 import com.szdd.qianxun.tools.top.NetTActivity;
 
-public class Register2 extends NetTActivity implements OnClickListener {
+public class ForgetFind2 extends NetTActivity implements OnClickListener {
     private static final int CDDE_WAIT_TIME = 90;// 验证码等待时间
     private int wait_time = CDDE_WAIT_TIME;
+    private String phone, code, pass1, pass2;
     private EditText et_code, et_pass1, et_pass2;
     private Button btn_eye1, btn_eye2;
-    private Button btn_code, btn_next;
-    private String phone, code, pass1, pass2;
+    private Button btn_code, btn_login;
 
     @Override
     public void onCreate() {
-        setContentView(R.layout.start_register2);
-        setTitle("设置密码");
+        setContentView(R.layout.start_forget_find2);
+        setTitle("设置登录密码");
         showBackButton();
         initActionBar(getResources().getColor(R.color.topbar_bg));
 
@@ -44,13 +49,14 @@ public class Register2 extends NetTActivity implements OnClickListener {
     }
 
     private void initView() {
-        et_code = (EditText) findViewById(R.id.register2_et_code);
-        et_pass1 = (EditText) findViewById(R.id.register2_et_pass1);
-        et_pass2 = (EditText) findViewById(R.id.register2_et_pass2);
-        btn_eye1 = (Button) findViewById(R.id.register2_btn_eye_pass1);
-        btn_eye2 = (Button) findViewById(R.id.register2_btn_eye_pass2);
-        btn_code = (Button) findViewById(R.id.register2_btn_getcode);
-        btn_next = (Button) findViewById(R.id.register2_btn_next);
+        et_code = (EditText) findViewById(R.id.forget_find2_et_code);
+        et_pass1 = (EditText) findViewById(R.id.forget_find2_et_pass1);
+        et_pass2 = (EditText) findViewById(R.id.forget_find2_et_pass2);
+        btn_eye1 = (Button) findViewById(R.id.forget_find2_btn_eye_pass1);
+        btn_eye2 = (Button) findViewById(R.id.forget_find2_btn_eye_pass2);
+        btn_code = (Button) findViewById(R.id.forget_find2_btn_getcode);
+        btn_login = (Button) findViewById(R.id.forget_find2_btn_sure);
+
         btn_eye1.setOnTouchListener(new OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
@@ -90,16 +96,16 @@ public class Register2 extends NetTActivity implements OnClickListener {
             }
         });
         btn_code.setOnClickListener(this);
-        btn_next.setOnClickListener(this);
+        btn_login.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.register2_btn_getcode:
+            case R.id.forget_find2_btn_getcode:
                 getCode();
                 break;
-            case R.id.register2_btn_next:
+            case R.id.forget_find2_btn_sure:
                 nextStep();
                 break;
         }
@@ -127,12 +133,56 @@ public class Register2 extends NetTActivity implements OnClickListener {
         pass2 = et_pass2.getText().toString();
         if (!SafeCheck.checkPass(this, pass1, pass2))
             return;
-        Intent intent = new Intent(this, Register3.class);
-        intent.putExtra("phone", phone);
-        intent.putExtra("code", code);
+        if (phone.equals("00000000")) {// ////////测试专用
+            alertSuccess();
+            return;
+        }
+        sendToServer();
+    }
+
+    private void sendToServer() {
+        ConnectEasy.POST(this, ServerURL.CODE_FORGET_ALTER,
+                new ConnectListener() {
+                    public ConnectDialog showDialog(ConnectDialog dialog) {
+                        dialog.config(ForgetFind2.this, "正在连接", "请稍候……", false);
+                        return dialog;
+                    }
+
+                    public ConnectList setParam(ConnectList list) {
+                        list.put("username", phone);
+                        list.put("checkCode", code);
+                        list.put("password", pass1);
+                        return list;
+                    }
+
+                    public void onResponse(String response) {
+                        if (response == null || response.equals("")) {
+                            showToast("连接失败");
+                        } else if (response.equals("failed")
+                                || response.equals("-2")) {
+                            showToast("系统错误");
+                        } else if (response.equals("-1")) {
+                            showToast("验证码错误");
+                        } else if (response.equals("1")) {// 登录成功
+                            showToast("修改成功");
+                            alertSuccess();
+                        } else {
+                            showToast("连接失败");
+                        }
+                    }
+                });
+    }
+
+    private void alertSuccess() {
+        wait_time = -1;
+        // 自动登录
+        setResult(Login.CODE_NEED_FINISH);
+        Intent intent = new Intent(ForgetFind2.this,
+                Login.class);
+        intent.putExtra("name", phone);
         intent.putExtra("pass", pass1);
-        wait_time = -1;// 终止计时线程
-        startActivityForResult(intent,0);
+        startActivity(intent);
+        finish();
     }
 
     // ////////计时部分//////////
@@ -173,14 +223,5 @@ public class Register2 extends NetTActivity implements OnClickListener {
 
     @Override
     public void showContextMenu() {
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Login.CODE_NEED_FINISH) {// 产生跳转，就关闭本页
-            setResult(Login.CODE_NEED_FINISH);
-            finish();
-        }
     }
 }

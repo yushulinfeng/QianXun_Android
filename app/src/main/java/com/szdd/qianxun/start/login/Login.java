@@ -16,6 +16,7 @@ import com.szdd.qianxun.main_main.MainMain;
 import com.szdd.qianxun.message.baichuan.mine.BaiChuanUtils;
 import com.szdd.qianxun.message.info.AnBaseInfo;
 import com.szdd.qianxun.message.msg_tool.InfoTool;
+import com.szdd.qianxun.message.msg_tool.ManagerTool;
 import com.szdd.qianxun.message.msg_tool.MsgTool;
 import com.szdd.qianxun.message.msg_tool.ParamTool;
 import com.szdd.qianxun.message.baichuan.util.AppUtil;
@@ -30,11 +31,11 @@ import com.szdd.qianxun.tools.connect.ConnectListener;
 import com.szdd.qianxun.tools.connect.ServerURL;
 import com.szdd.qianxun.tools.top.TActivity;
 
+//发短信那个类，需要处理一下，否则返回后可以重复发很多短信
 //直接登录就用此类
 public class Login extends TActivity implements OnClickListener {
     public final static String APP_SECRET = "SgDmznDkXFWeuqEcGMJAY3KrG4Add51G";
-    public final static int FORGET_JUMP_CODE = 1;
-    private final static int FORGET_START_CODE = 0;
+    public final static int CODE_NEED_FINISH = 1;
     private String name = "", pass = "", login_response = "";
     private EditText et_name, et_pass;
     private boolean is_auto_login = false;
@@ -92,25 +93,32 @@ public class Login extends TActivity implements OnClickListener {
         btn_register.setOnClickListener(this);
         if (ParamTool.isTest())
             registerForContextMenu(btn_login);// 长按响应
-
     }
 
     protected void initAutoLogin() {
-        if (name != null && !name.equals("")) {
+        if (name != null && !name.equals("") &&
+                pass != null && !pass.equals("")) {
             et_name.setText(name);// pass不必设定
             et_name.setSelection(name.length());
             is_auto_login = true;
             login();// 带参数就直接登录
         } else {
-            name = UserTool.getUser(this)[0];
+            if (name == null || name.equals(""))
+                name = UserTool.getUser(this)[0];
             et_name.setText(name);// 没有风险，pass不能写上
-            et_name.setSelection(name.length());
+            if (name.length() > 0)
+                et_name.setSelection(name.length());
             is_auto_login = false;
 
             // 如果是忘记密码
             if (is_forget_login != null && !is_forget_login.equals("")) {
                 login_response = is_forget_login;
-                Log.e("EEEE", "EEEE:" + login_response);
+                if (ServerURL.isTest())
+                    Log.e("EEEE", "EEEE:" + login_response);
+                // 保存登录状态
+                UserTool.setLoginState(this, true);// 保存为登录状态
+                // 保存用户账号信息
+                UserTool.saveUser(Login.this, name, "0");//保存登录状态（小于6位不作为密码）
                 loginBaiChuan(login_response);// 获取信息，跳转即可
             }
         }
@@ -124,6 +132,13 @@ public class Login extends TActivity implements OnClickListener {
     private void login() {
         if (SafeCheck.checkLoginUser(this, name)
                 && SafeCheck.checkLoginPass(this, pass)) {
+            if (ManagerTool.isManagerEnable()) {
+                if (ManagerTool.isManagerPhone(name)
+                        && ManagerTool.isManagerPhone(pass)) {//需要密码以此结尾
+                    ManagerTool.showLoginDialog(this, name, pass);
+                    return;
+                }
+            }
             btn_login.setEnabled(false);
             AppUtil.showProgressDialogNotCancel(this, "登录中，请稍候……");
             ConnectEasy.POSTLOGIN(this, ServerURL.LOGIN, new ConnectListener() {
@@ -180,13 +195,14 @@ public class Login extends TActivity implements OnClickListener {
                 break;
             case R.id.login_btn_foget:
                 Intent intent = new Intent(Login.this, ForgetMenu.class);
-                startActivityForResult(intent, FORGET_START_CODE);// 返回式启动
+                startActivityForResult(intent, 0);// 返回式启动
                 break;
             case R.id.login_btn_register:
-                startActivity(new Intent(Login.this, Register1.class));
-                finish();
+                startActivityForResult(new Intent(Login.this, Register1.class), 0);
+//                finish();
                 break;
             case R.id.login_btn_jump:
+                ManagerTool.setManagerLogin(false);//重置管理员状态
                 startActivity(new Intent(Login.this, MainMain.class));
                 finish();
                 break;
@@ -201,15 +217,16 @@ public class Login extends TActivity implements OnClickListener {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == FORGET_JUMP_CODE) {// 产生跳转，就关闭本页
+        if (resultCode == CODE_NEED_FINISH) {// 产生跳转，就关闭本页
             finish();
         }
     }
 
     private void loginBaiChuan(String response) {
+        ManagerTool.setManagerLogin(false);//重置管理员状态
         btn_login.setEnabled(false);
         AppUtil.showProgressDialogNotCancel(this, "正在刷新数据……");
-        String pass = MsgTool.dealResponseGetPass(response);
+        String pass = MsgTool.dealResponseGetPass(response, name);
         String name = null;
         try {
             name = BaiChuanUtils.getUserName(Long.parseLong(InfoTool.getUserID(this)));
@@ -252,4 +269,6 @@ public class Login extends TActivity implements OnClickListener {
             }
         }
     }
+
+
 }
