@@ -6,7 +6,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
-import com.szdd.qianxun.main_main.QianxunApplication;
+import com.szdd.qianxun.main_main.MyApplication;
 
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
@@ -156,7 +156,7 @@ public class MultipartRequest extends Request<String> {
 
         if (headers == null || headers.equals(Collections.emptyMap())) {
             headers = new HashMap<String, String>();
-            String cookie = ConnectTool.getCookie(QianxunApplication.getContext());
+            String cookie = ConnectTool.getCookie(MyApplication.getInstance());
             headers.put("Cookie", cookie == null ? "" : cookie);
         }
 

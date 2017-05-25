@@ -2,8 +2,10 @@ package com.szdd.qianxun.tools.connect;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.util.Log;
 
+import com.alibaba.fastjson.JSONObject;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -12,7 +14,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -125,11 +126,28 @@ public class ConnectEasy extends AsyncTask<Void, Void, String> {
                         @Override
                         public void onResponse(String response) {
                             try {//编码处理
-                                response = new String(response.getBytes("ISO-8859-1"), "utf-8");
+                                if (ServerURL.isTest()) {
+                                    Log.e("EEE-VOLLEY-url", url + "");
+                                    if (list != null && list.getMap() != null)
+                                        Log.e("EEE-VOLLEY-params", list.getMap().size() + "");
+                                    if (!TextUtils.isEmpty(response))
+                                        Log.e("EEE-VOLLEY-response1", response);
+                                }
+                                if (!TextUtils.isEmpty(response)) {
+                                    response = new String(response.getBytes("ISO-8859-1"), "utf-8");
+                                    if (ServerURL.isTest()) {
+                                        Log.e("EEE-VOLLEY-response2", response + "");
+                                        response = ConnectBase.decode(response);//便于查看(此方法更加稳定)
+                                        Log.e("EEE-VOLLEY-response3", response + "");
+                                    }
+                                }
                             } catch (Exception e) {
+                                if (ServerURL.isTest()) {
+                                    Log.e("EEE-VOLLEY-error", "response other error");
+                                    if (e != null)
+                                        Log.e("EEE-VOLLEY-error", e.getMessage() + "");
+                                }
                             }
-                            if (ServerURL.isTest())
-                                Log.e("EEE-VOLLEY", response + "");
                             if (listener != null)
                                 listener.onResponse(response);
                             if (dialog != null)
@@ -139,21 +157,21 @@ public class ConnectEasy extends AsyncTask<Void, Void, String> {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
+                            if (ServerURL.isTest()) {
+                                Log.e("EEE-VOLLEY-error", "response error");
+                                if (error != null)
+                                    Log.e("EEE-VOLLEY-error", error.getMessage() + "");
+                            }
                             if (listener != null)
                                 listener.onResponse("");
                             if (dialog != null)
                                 dialog.hide();
-//                        //这句千万不能写，不知为何会报错
-//                        if (error != null)
-//                            Log.e("EEE-VOLLEY-ERROR", error.getMessage());
                         }
                     }) {
                 @Override
                 protected Map<String, String> getParams() {
                     if (listener != null) {
                         if (list != null) {
-                            if (ServerURL.isTest())
-                                Log.e("EEE-VOLLEY-params", list.getMap().size() + "");
                             return list.getMap();
                         }
                     }
@@ -165,6 +183,8 @@ public class ConnectEasy extends AsyncTask<Void, Void, String> {
                     Map<String, String> map = new HashMap<>();
                     String cookie = ConnectTool.getCookie(context);
                     map.put("Cookie", cookie == null ? "" : cookie);
+                    if (ServerURL.isTest())
+                        Log.e("EEE-VOLLEY-cookie", "" + cookie);
                     return map;
                 }
             };
@@ -183,16 +203,27 @@ public class ConnectEasy extends AsyncTask<Void, Void, String> {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            if (ServerURL.isTest())
-                                Log.e("EEE-VOLLEY-before", response);
                             try {//编码处理
-                                String response_temp = new String(response.getBytes("ISO-8859-1"), "utf-8");
-                                response_temp = URLDecoder.decode(response_temp, "UTF-8");
-                                response = response_temp;
+                                if (ServerURL.isTest()) {
+                                    Log.e("EEE-VOLLEY-url", url + "");
+                                    if (list != null && list.getMap() != null)
+                                        Log.e("EEE-VOLLEY-params", list.getMap().size() + "");
+                                    if (!TextUtils.isEmpty(response))
+                                        Log.e("EEE-VOLLEY-response1", response + "");
+                                }
+                                if (!TextUtils.isEmpty(response)) {
+                                    response = new String(response.getBytes("ISO-8859-1"), "utf-8");
+                                    response = JSONObject.parse(response).toString();
+                                    if (ServerURL.isTest())
+                                        Log.e("EEE-VOLLEY-response2", response + "");
+                                }
                             } catch (Exception e) {
+                                if (ServerURL.isTest()) {
+                                    Log.e("EEE-VOLLEY-error", "response other error");
+                                    if (e != null)
+                                        Log.e("EEE-VOLLEY-error", e.getMessage() + "");
+                                }
                             }
-                            if (ServerURL.isTest())
-                                Log.e("EEE-VOLLEY", response);
                             if (listener != null)
                                 listener.onResponse(response);
                             if (dialog != null)

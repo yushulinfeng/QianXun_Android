@@ -1,13 +1,25 @@
 package com.szdd.qianxun.tools.connect;
 
+import android.os.Environment;
+
 import com.szdd.qianxun.message.msg_tool.ParamTool;
+import com.szdd.qianxun.tools.file.FileTool;
+
+import java.io.File;
 
 public class ServerURL {
-    private static final boolean IS_TEST_MODE = false;// 是否为测试模式
+    private static final boolean IS_TEST_MODE = true;// 是否为测试模式
+    private static final boolean IS_SERVER_MODE = false;// 是否为后台测试模式
+    private static final boolean IS_DISENABLE_MANAGER = false;// 是否禁用管理员
     private static final String SERVER_IP = "http://120.27.25.61";
     //服务器IP地址http://121.42.157.195:8080//new : http://120.27.25.61/
+    private static String DYNAMIC_SERVER_IP = null;
 
+    //管理员相关
+    public static final String MANAGER_LOGIN = "userVerify_adminLogin.action";
+    public static final String MANAGER_DEL_SERVICE = "businessService_adminShield.action";
     // 登录注册相关
+    public static final String TIME_STAMP = "util_getTimestamp.action";
     public static final String USER_EXIST_CHECK = "userRegister_checkPNumber.action";
     public static final String REGISTER = "userRegister_regist.action";
     public static final String LOGIN = "userLogin_login.action";
@@ -22,9 +34,11 @@ public class ServerURL {
     public static final String CREDIT_SDU = "userVerify_saveStu.action";// 学生认证网址
     public static final String ALTER_INFO = "user_updateInfoById.action";// 修改个人信息
 
+    public static final String BUSINESS_MAIN_SCHOOL = "businessService_getSchoolByPage.action";// 获取同一学校
     public static final String BUSINESS_MAIN_ROUND = "businessService_getLocalByPage.action";// 获取附近
     public static final String BUSINESS_MAIN_LAST = "businessService_getLatestByPage.action";// 获取最近
     public static final String BUSINESS_MAIN_HOT = "businessService_getHotByPage.action";// 获取综合项目//暂不修改
+    public static final String BUSINESS_SCHOOL = "businessService_getSchoolByCategory.action";// 获取同一学校项目//暂不修改
     public static final String BUSINESS_LAST = "businessService_getLatestByCategory.action";// 获取最新项目//暂不修改
     public static final String BUSINESS_ROUND = "businessService_getLocalByCategory.action";// 获取附近项目//改
     public static final String BUSINESS_COLLECT = "user_getAllFavoriteServiceByUserId.action";// 获取收藏
@@ -148,7 +162,7 @@ public class ServerURL {
     //删除动态
     public static final String DELETE_DYNAMIC = "dynamic_delete.action";
     //删除服务
-    public static final String DELETE_SERVICE="businessService_shield.action";
+    public static final String DELETE_SERVICE = "businessService_shield.action";
     //获取个人关注的人
     public static final String GET_ALL_ATTENTION = "user_getAllConcernPeopleById.action";
     //修改背景图片
@@ -167,11 +181,29 @@ public class ServerURL {
      * @return 服务器IP地址（http开头）
      */
     public static String getIP() {
+        if (DYNAMIC_SERVER_IP != null) {
+            return DYNAMIC_SERVER_IP;
+        }
         // 使用在线参数的IP
         String value = ParamTool.getParam("sever_ip");
         if (value.equals("") || value.equals("0"))
-            return SERVER_IP;
-        return "http://" + value;
+            DYNAMIC_SERVER_IP = SERVER_IP;
+        else
+            DYNAMIC_SERVER_IP = "http://" + value;
+        //本地IP，测试专用
+        if (isTest() && IS_SERVER_MODE) {
+            File ip_file = new File(Environment.getExternalStorageDirectory(),
+                    "GaoNengIP.txt");
+            if (ip_file.exists()) {
+                String ip_temp = FileTool.readFile(ip_file);
+                if (ip_temp != null && !ip_temp.equals(""))
+                    DYNAMIC_SERVER_IP = ip_temp.trim();
+            } else {
+                DYNAMIC_SERVER_IP = SERVER_IP;
+                FileTool.saveFile(ip_file, SERVER_IP);
+            }
+        }
+        return DYNAMIC_SERVER_IP;
     }
 
     /**
@@ -192,4 +224,14 @@ public class ServerURL {
     public static boolean isTest() {
         return IS_TEST_MODE;
     }
+
+    /**
+     * 是否为允许管理员模式
+     *
+     * @return true：允许模式；false：禁止模式。
+     */
+    public static boolean isDisenableManager() {
+        return IS_DISENABLE_MANAGER;
+    }
+
 }

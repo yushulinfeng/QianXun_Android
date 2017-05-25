@@ -1,5 +1,7 @@
 package com.szdd.qianxun.tools.connect;
 
+import android.text.TextUtils;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -28,6 +30,18 @@ public class ConnectSign {
      */
     public static void dealTimeSpace(long time) {
         TIME_SPACE = time - System.currentTimeMillis();
+    }
+
+    public static void dealTimeSpace(String time) {
+        if (TextUtils.isEmpty(time))
+            return;
+        if(time.length()!=13)
+            return;
+        try {
+            long time_long = Long.parseLong(time);
+            dealTimeSpace(time_long);
+        } catch (Exception e) {
+        }
     }
 
     /**
