@@ -1,6 +1,5 @@
 package com.szdd.qianxun.main_main;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
@@ -12,26 +11,24 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.baidu.mobstat.StatService;
 import com.google.gson.Gson;
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.szdd.qianxun.R;
-import com.szdd.qianxun.message.info.ShowAllInfo;
+import com.szdd.qianxun.advertise.PictureFragment;
+import com.szdd.qianxun.message.baichuan.util.AndTools;
 import com.szdd.qianxun.message.info.AnBaseInfo;
 import com.szdd.qianxun.message.info.AnUserInfo;
+import com.szdd.qianxun.message.info.ShowAllInfo;
 import com.szdd.qianxun.message.msg_tool.InfoTool;
 import com.szdd.qianxun.message.msg_tool.ParamTool;
-import com.szdd.qianxun.message.baichuan.util.AndTools;
+import com.szdd.qianxun.more.MainSet;
+import com.szdd.qianxun.sell.discuss.DiscussTool;
 import com.szdd.qianxun.sell.main.MainTabSell;
 import com.szdd.qianxun.start.register.Register3;
 import com.szdd.qianxun.tools.all.StaticMethod;
 import com.szdd.qianxun.tools.bitmap.BitmapListener;
 import com.szdd.qianxun.tools.bitmap.BitmapTool;
 import com.szdd.qianxun.tools.connect.ConnectDialog;
-import com.szdd.qianxun.tools.connect.ConnectEasy;
 import com.szdd.qianxun.tools.connect.ConnectList;
 import com.szdd.qianxun.tools.connect.ConnectListener;
 import com.szdd.qianxun.tools.connect.ServerURL;
@@ -55,15 +52,13 @@ public class MainMain extends MainTActivity implements OnClickListener {
     private ArrayList<Fragment> fragment_list;
     private int msg_index = -1;
     private TextView top_location_text, tv_count;
-    public static DisplayImageOptions mOptions;
-    public static DisplayImageOptions mHeadOptions;
+    private boolean is_first_init;
 
     @Override
     public void onCreate() {
         setContentView(R.layout.main_tab);
 
         getMessage();
-        showMenuButton();
         initUM();
         initView();
         initListener();
@@ -72,7 +67,9 @@ public class MainMain extends MainTActivity implements OnClickListener {
 
         initSlidingMenu();
         loadFirstFragmen();
-        initImageLoader(this);
+
+        is_first_init = true;
+        MainSet.checkNewVersion(this, true);
     }
 
     private void getMessage() {
@@ -100,26 +97,26 @@ public class MainMain extends MainTActivity implements OnClickListener {
         sm.setFadeDegree(0.25f);
 
         // 使用在线参数修改配置，类似于热更新。（目前用于娱乐）
-        String value = ParamTool.getParam("menu_type");
-        if (value.equals("1")) {
+//        String value = ParamTool.getParam("menu_type");
+//        if (value.equals("1")) {
             sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);// 滑动菜单视图的宽度
             sm.setFadeDegree(0f);// 渐入渐出效果的值
             sm.setBehindScrollScale(0f);// 滑动菜单滑动时缩放的效果
             sm.setScareEnable(true);// 是否允许缩放
-        }
+//        }
 
     }
 
     // 初始化控件
     private void initView() {
-        fragment_list = new ArrayList<Fragment>();
+        fragment_list = new ArrayList<>();
 
         main_tab_01 = new MainTab_01();
         main_tab_05 = new MainTab_05();
-        fragment_list.add(main_tab_01.getImFragment());
-        fragment_list.add(new MainTabSell());
-        fragment_list.add(new MainTab_03());
-        fragment_list.add(new MainTab_04());
+
+        fragment_list.add(new MainTabSell());//new MainTab_03()
+        fragment_list.add(new PictureFragment());//new MainTab_04()
+        fragment_list.add(main_tab_01.getImFragment());//new MainTabSell()
         fragment_list.add(main_tab_05);
 
         main_bottom = new MainBottom(this);
@@ -135,12 +132,13 @@ public class MainMain extends MainTActivity implements OnClickListener {
         if (msg_index != -1) {
             current_index = last_index = msg_index;// 默认跳转
         } else {
-            current_index = last_index = 1;// 首个页面--------------------------
+            current_index = last_index = 0;// 首个页面--------------------------
             if (!ServerURL.isTest()) {// 不是测试模式
                 String value = ParamTool.getParam("main_tab");
-                int index_temp = current_index;
+                int index_temp;
                 try {
                     index_temp = Integer.parseInt(value);
+                    index_temp--;/////////新的实训版本，与原版本相差1
                 } catch (Exception e) {
                     index_temp = current_index;
                 }
@@ -148,7 +146,6 @@ public class MainMain extends MainTActivity implements OnClickListener {
             }
         }
         updateFragment();
-
     }
 
     private void updateUserLocation() {
@@ -165,7 +162,7 @@ public class MainMain extends MainTActivity implements OnClickListener {
                     top_location_text.setText("世界");
                     return;
                 }
-                String sheng = "", shi = "", show = "";
+                String sheng, shi, show;
                 try {
                     if (end_sheng != -1) {
                         sheng = locationName.substring(start_guo + 2, end_sheng + 1);
@@ -184,55 +181,87 @@ public class MainMain extends MainTActivity implements OnClickListener {
     }
 
     private void updateUserInfo() {
-        main_menu.updateHeadView(null, null);
-        ConnectEasy.POST(this, ServerURL.HOMEPAGE_PERSONAL_DETAIL, new ConnectListener() {
-            public ConnectDialog showDialog(ConnectDialog dialog) {
-                return null;
+        if (!"".equals(InfoTool.getUserID(this))) {
+            AnUserInfo old_info = InfoTool.getUserInfo(this);
+            final String old_nick;
+            final String old_head;
+            if (old_info == null) {
+                old_nick = "";
+                old_head = "";
+            } else {
+                old_nick = old_info.getNickName();
+                old_head = old_info.getHeadIcon();
             }
+            StaticMethod.POST(this, ServerURL.HOMEPAGE_PERSONAL_DETAIL, new ConnectListener() {
+                        public ConnectDialog showDialog(ConnectDialog dialog) {
+                            return null;
+                        }
 
-            public ConnectList setParam(ConnectList list) {
-                //需要保留InfoTool的作用
-                list.put("userId", InfoTool.getUserID(MainMain.this));
-                return list;
-            }
+                        public ConnectList setParam(ConnectList list) {
+                            //需要保留InfoTool的作用
+                            list.put("userId", InfoTool.getUserID(MainMain.this));
+                            return list;
+                        }
 
-            public void onResponse(String response) {
-                // 各种失败都不用管
-                if (response == null || response.equals("")
-                        || response.equals("failed") || response.equals("-1")
-                        || response.equals("-2")) {
-                } else {// 如果成功的话
-                    try {
-                        InfoTool.saveUserInfo(MainMain.this, response);
-                        final AnUserInfo info = new Gson().fromJson(response, AnUserInfo.class);
-                        AnBaseInfo an_info = new AnBaseInfo(info.getUsername() + "",
-                                info.getNickName(), info.getGender(),
-                                info.getBirthday(), info.getAddress(),
-                                Register3.getIconPath());
-                        InfoTool.saveBaseInfo(MainMain.this, an_info);
-                        // 图片下载
-                        StaticMethod.UBITMAPHEAD(ServerURL.getIP() + info.getHeadIcon(),
-                                new BitmapListener() {
-                                    public void onResponse(Bitmap bitmap) {
-                                        if (bitmap != null) {
-                                            boolean temp = BitmapTool.writeToFile(bitmap,
-                                                    "png", Register3.getIconPath());
-                                            if (ServerURL.isTest())
-                                                Log.e("EEEEE", "SAVE-" + temp + "");
-                                            main_menu.updateHeadView(bitmap, info.getNickName());
-                                            try {//可能MainTab_05还没有添加到Fragment中
-                                                if (current_index == 4)
-                                                    main_tab_05.updateHead(bitmap, info.getNickName(), info.getVerifyStatus());
-                                            } catch (Exception e) {
-                                            }
+                        public void onResponse(String response) {
+                            // 各种失败都不用管
+                            //noinspection StatementWithEmptyBody
+                            if (response == null || response.equals("")
+                                    || response.equals("failed") || response.equals("-1")
+                                    || response.equals("-2")) {
+                            } else {// 如果成功的话
+                                try {
+                                    //存储基本信息
+                                    InfoTool.saveUserInfo(MainMain.this, response);
+                                    final AnUserInfo info = new Gson().fromJson(response, AnUserInfo.class);
+                                    AnBaseInfo an_info = new AnBaseInfo(info.getUsername() + "",
+                                            info.getNickName(), info.getGender(),
+                                            info.getBirthday(), info.getAddress(),
+                                            Register3.getIconPath());
+                                    InfoTool.saveBaseInfo(MainMain.this, an_info);
+                                    //首次启动的话，登录讨论区
+                                    if (is_first_init) {
+                                        DiscussTool.getInstance().loginDiscuss(MainMain.this,
+                                                info.getId() + "", info.getNickName(),
+                                                !info.getGender().equals("女"), ServerURL.getIP() + info.getHeadIcon());
+                                    } else {
+                                        if (old_nick != null && !old_nick.equals(info.getNickName())) {
+                                            DiscussTool.getInstance().updateUserInfo(MainMain.this,
+                                                    info.getId() + "", info.getNickName(), !info.getGender().equals("女"),
+                                                    ServerURL.getIP() + info.getHeadIcon());
+                                        } else if (old_head != null && !old_head.equals(info.getHeadIcon())) {
+                                            DiscussTool.getInstance().updateUserInfo(MainMain.this,
+                                                    ServerURL.getIP() + info.getHeadIcon());
                                         }
                                     }
-                                });
-                    } catch (Exception e) {
+                                    // 图片下载(首次刷新，或者有变化时刷新)
+                                    if (is_first_init || (old_head != null && !old_head.equals(info.getHeadIcon())))
+                                        StaticMethod.UBITMAPHEAD(ServerURL.getIP() + info.getHeadIcon(),
+                                                new BitmapListener() {
+                                                    public void onResponse(Bitmap bitmap) {
+                                                        if (bitmap != null) {
+                                                            boolean temp = BitmapTool.writeToFile(bitmap,
+                                                                    "jpg", Register3.getIconPath());
+                                                            if (ServerURL.isTest())
+                                                                Log.e("EEEEE", "SAVE-" + temp + "");
+                                                            main_menu.updateHeadView(bitmap, info.getNickName());
+                                                            try {//可能MainTab_05还没有添加到Fragment中
+                                                                if (current_index == 4)
+                                                                    main_tab_05.updateHead(bitmap, info.getNickName(), info.getVerifyStatus());
+                                                            } catch (Exception ignore) {
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                    is_first_init = false;
+                                } catch (Exception ignore) {
+                                }
+                            }
+                        }
                     }
-                }
-            }
-        });
+
+            );
+        }
     }
 
     private void initListener() {
@@ -262,7 +291,7 @@ public class MainMain extends MainTActivity implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tab_linear_01:
+            case R.id.tab_linear_01://hide
                 current_index = 0;
                 break;
             case R.id.tab_linear_02:
@@ -274,9 +303,9 @@ public class MainMain extends MainTActivity implements OnClickListener {
             case R.id.tab_linear_04:
                 current_index = 3;
                 break;
-            case R.id.tab_linear_05:
-                current_index = 4;
-                break;
+//            case R.id.tab_linear_05:
+//                current_index = 3;
+//                break;
             case R.id.tab_iv_add:
                 clickBtnAdd();
                 return;
@@ -293,6 +322,8 @@ public class MainMain extends MainTActivity implements OnClickListener {
         // SDK在统计Fragment时，需要关闭Activity自带的页面统计，
         // 然后在每个页面中重新集成页面统计的代码(包括调用了 onResume 和 onPause 的Activity)。
         MobclickAgent.openActivityDurationTrack(false);
+        if (ServerURL.isTest())
+            StatService.setDebugOn(true);
     }
 
     @Override
@@ -300,6 +331,7 @@ public class MainMain extends MainTActivity implements OnClickListener {
         super.onPause();
         main_tab_01.onPause();
         MobclickAgent.onPause(this);
+        StatService.onPause(this);
     }
 
     @Override
@@ -307,6 +339,7 @@ public class MainMain extends MainTActivity implements OnClickListener {
         super.onResume();
         main_tab_01.onResume();
         MobclickAgent.onResume(this);
+        StatService.onResume(this);
         updateUserInfo();
     }
 
@@ -332,6 +365,8 @@ public class MainMain extends MainTActivity implements OnClickListener {
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         if (v.getId() == R.id.main_menu_head_layout) {
+            if (ServerURL.isTest())
+                startActivity(new Intent(this, TestActivity.class));
             showContent();// 收回菜单
         }
     }
@@ -341,21 +376,17 @@ public class MainMain extends MainTActivity implements OnClickListener {
         main_bottom.setCurrentTab(current_index);// 底部刷新
         setTopPosition(current_index);// 顶部刷新
         //消息和推送
-        if (current_index == 0) {
-            if (last_index != 0) {//已经显示不能处理
-                hideMenuButton();
+        if (current_index == 2) {
+            if (last_index != 2) {//已经显示不能处理
                 tv_count.setVisibility(View.INVISIBLE);
                 main_tab_01.setUnreadView(null);
             }
         } else {
-            showMenuButton();
+            if (current_index == 3)
+                main_tab_05.updateHead();
             main_tab_01.setUnreadView(tv_count);
         }
 //        // 替换Fragment，这个每次View都会被销毁，需要重新onCreateView
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.main_content, fragment_list.get(current_index),
-//                        TAG).commit();
         //通过一种不销毁的方式，替换视图。（replace与ViewPager机制不同）
         switchContent(fragment_list.get(last_index), fragment_list.get(current_index));
         // 刷新last_index
@@ -376,13 +407,13 @@ public class MainMain extends MainTActivity implements OnClickListener {
 
 
     @Override
-    protected void showContextMenu(View v, int cur_page) {
-        current_index = 0;
-        // 减少不必要的初始化
-        if (last_index == current_index) {
-            return;
-        }
-        updateFragment();
+    protected void showContextMenu(View v, int cur_page) {//hide
+//        current_index = 0;
+//        // 减少不必要的初始化
+//        if (last_index == current_index) {
+//            return;
+//        }
+//        updateFragment();
     }
 
     @Override
@@ -392,7 +423,7 @@ public class MainMain extends MainTActivity implements OnClickListener {
             try {
 //                if (current_index == 4)
                 main_tab_05.updateHead();
-            } catch (Exception e) {
+            } catch (Exception ignore) {
             }
             return;
         }
@@ -402,37 +433,5 @@ public class MainMain extends MainTActivity implements OnClickListener {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
-    /**
-     * 初始化ImageLoader
-     */
-    private void initImageLoader(Context context) {
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
-                .threadPriority(Thread.NORM_PRIORITY - 2)
-                .denyCacheImageMultipleSizesInMemory()
-                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
-                .diskCacheSize(200 * 1024 * 1024) // 200 Mb
-                .tasksProcessingOrder(QueueProcessingType.LIFO)
-                .build();
-        ImageLoader.getInstance().init(config);
-        //统一使用
-        mOptions = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.icon_img_load_ing)   //加载过程中
-                .showImageForEmptyUri(R.drawable.icon_img_load_fail) //uri为空时
-                .showImageOnFail(R.drawable.icon_img_load_fail)      //加载失败时
-                .cacheOnDisk(true)
-                .cacheInMemory(true)                             //允许cache在内存和磁盘中
-                .bitmapConfig(Bitmap.Config.RGB_565)             //图片压缩质量参数
-                .build();
-        mHeadOptions = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.mascot_orange)   //加载过程中
-                .showImageForEmptyUri(R.drawable.mascot_orange) //uri为空时
-                .showImageOnFail(R.drawable.mascot_orange)      //加载失败时
-                .cacheOnDisk(false)
-                .cacheInMemory(true)                             //允许cache在内存和磁盘中
-                .bitmapConfig(Bitmap.Config.RGB_565)             //图片压缩质量参数
-                .build();
-    }
-
 
 }

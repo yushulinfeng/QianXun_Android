@@ -6,9 +6,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.widget.Button;
 import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -53,7 +51,7 @@ public abstract class MainTActivity extends SlidingFragmentActivity {
     // ////////允许子类调用的方法
     protected void setTopPosition(int position) {// 此处不要用全局变量
         TextView tv_title = (TextView) findViewById(R.id.top_text);
-        String[] text_title = {"消息", "口袋掌柜", "附近需求", "成果", "我的"};
+        String[] text_title = {"附近需求", "分享", "消息", "我的"};
         if (position < 0 || position > 4) {
             tv_title.setText("高能");
             return;
@@ -109,34 +107,34 @@ public abstract class MainTActivity extends SlidingFragmentActivity {
         }
     }
 
-    protected void showMenuButton() {
-        Button top_menu = (Button) findViewById(R.id.top_menu);
-        top_menu.setVisibility(ImageButton.VISIBLE);
-        top_menu.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                showContextMenu(v, cur_page);
-            }
-        });
-
-//        Button top_location = (Button) findViewById(R.id.top_location);
-//        top_location.setVisibility(ImageButton.VISIBLE);
-//        TextView top_location_text = (TextView) findViewById(R.id.top_location_text);
-//        top_location_text.setVisibility(ImageButton.VISIBLE);
-//        TextView top_title = (TextView) findViewById(R.id.top_text);
-//        top_title.setVisibility(ImageButton.VISIBLE);
-    }
-
-    protected void hideMenuButton() {
-        Button top_menu = (Button) findViewById(R.id.top_menu);
-        top_menu.setVisibility(ImageButton.INVISIBLE);
-
-//        Button top_location = (Button) findViewById(R.id.top_location);
-//        top_location.setVisibility(ImageButton.INVISIBLE);
-//        TextView top_location_text = (TextView) findViewById(R.id.top_location_text);
-//        top_location_text.setVisibility(ImageButton.INVISIBLE);
-//        TextView top_title = (TextView) findViewById(R.id.top_text);
-//        top_title.setVisibility(ImageButton.INVISIBLE);
-    }
+//    protected void showMenuButton() {
+//        Button top_menu = (Button) findViewById(R.id.top_menu);
+//        top_menu.setVisibility(ImageButton.VISIBLE);
+//        top_menu.setOnClickListener(new OnClickListener() {
+//            public void onClick(View v) {
+//                showContextMenu(v, cur_page);
+//            }
+//        });
+//
+////        Button top_location = (Button) findViewById(R.id.top_location);
+////        top_location.setVisibility(ImageButton.VISIBLE);
+////        TextView top_location_text = (TextView) findViewById(R.id.top_location_text);
+////        top_location_text.setVisibility(ImageButton.VISIBLE);
+////        TextView top_title = (TextView) findViewById(R.id.top_text);
+////        top_title.setVisibility(ImageButton.VISIBLE);
+//    }
+//
+//    protected void hideMenuButton() {
+//        Button top_menu = (Button) findViewById(R.id.top_menu);
+//        top_menu.setVisibility(ImageButton.INVISIBLE);
+//
+////        Button top_location = (Button) findViewById(R.id.top_location);
+////        top_location.setVisibility(ImageButton.INVISIBLE);
+////        TextView top_location_text = (TextView) findViewById(R.id.top_location_text);
+////        top_location_text.setVisibility(ImageButton.INVISIBLE);
+////        TextView top_title = (TextView) findViewById(R.id.top_text);
+////        top_title.setVisibility(ImageButton.INVISIBLE);
+//    }
 
     // ////////允许子类调用的方法-辅助
     protected void showToast(String text) {

@@ -20,9 +20,10 @@ import android.widget.TextView;
 import com.joooonho.SelectableRoundedImageView;
 import com.szdd.qianxun.R;
 import com.szdd.qianxun.message.friend.FriendList;
-import com.szdd.qianxun.message.info.ShowAllInfo;
 import com.szdd.qianxun.message.info.AnBaseInfo;
 import com.szdd.qianxun.message.msg_tool.InfoTool;
+import com.szdd.qianxun.message.msg_tool.ManagerTool;
+import com.szdd.qianxun.message.msg_tool.MsgPublicTool;
 import com.szdd.qianxun.message.msg_tool.ParamTool;
 import com.szdd.qianxun.message.msg_tool.UserStateTool;
 import com.szdd.qianxun.more.MainSet;
@@ -102,6 +103,10 @@ public class MainMenu extends Fragment {
             if (!UserStateTool.isLoginNow(activity)) {
                 menu_head_state.setText("（离线）");
             }
+        }else{
+            menu_head_name.setText("点击登录");
+            if(ManagerTool.isManagerLogin())
+                menu_head_name.setText("管理员");
         }
     }
 
@@ -149,9 +154,7 @@ public class MainMenu extends Fragment {
             return;
         }
         // 现在已登录，显示个人资料(静态方法即使传入Activity，也不能返回)
-        Intent intent = new Intent(activity, ShowAllInfo.class);
-        intent.putExtra("user_id", 0L);
-        activity.startActivityForResult(intent, 0);
+        MsgPublicTool.showHomePage(activity,0);
     }
 
     private void clickListItem(int position) {
