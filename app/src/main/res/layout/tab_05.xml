@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/label_color"
+    android:orientation="vertical">
+
+    <com.szdd.qianxun.tools.views.SpringScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="5dp">
+
+            <LinearLayout
+                android:id="@+id/tab05_head_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/tab_center_bg"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <com.joooonho.SelectableRoundedImageView
+                    android:id="@+id/tab05_head_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/mascot_orange"
+                    app:sriv_left_bottom_corner_radius="25dp"
+                    app:sriv_left_top_corner_radius="25dp"
+                    app:sriv_oval="true"
+                    app:sriv_right_bottom_corner_radius="25dp"
+                    app:sriv_right_top_corner_radius="25dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tab05_head_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:singleLine="true"
+                            android:text="Loading……"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_title" />
+
+                        <ImageView
+                            android:id="@+id/tab05_head_sex"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/boy" />
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tab05_tv_verify_id"
+                                style="@style/tab05_tv_style"
+                                android:background="@drawable/shape_rectf_gray"
+                                android:paddingBottom="1dp"
+                                android:paddingTop="1dp"
+                                android:text="已实名认证"
+                                android:textColor="@color/white"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/tab05_tv_verify_stu"
+                                style="@style/tab05_tv_style"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/shape_rectf_gray"
+                                android:text="已学生认证"
+                                android:textColor="@color/white"
+                                android:visibility="gone" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tab05_head_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:background="#0000"
+                            android:singleLine="true"
+                            android:text="登录开启更多精彩"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_large"
+                            android:visibility="invisible" />
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/label_color"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textColor="@color/dark_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/tab05_ibtn_cash"
+                        style="@style/tab05_ibtn_style"
+                        android:background="@drawable/cash_yue" />
+
+                    <TextView
+                        android:id="@+id/tab05_tv_cash"
+                        style="@style/tab05_tv_style"
+                        android:text="余额" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/tab05_ibtn_collect"
+                        style="@style/tab05_ibtn_style"
+                        android:background="@drawable/icon_my_collect" />
+
+                    <TextView
+                        android:id="@+id/tab05_tv_collect"
+                        style="@style/tab05_tv_style"
+                        android:text="收藏" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/tab05_ibtn_collect_people"
+                        style="@style/tab05_ibtn_style"
+                        android:background="@drawable/icon_my_collect_people" />
+
+                    <TextView
+                        android:id="@+id/tab05_tv_collect_people"
+                        style="@style/tab05_tv_style"
+                        android:text="关注的人" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/label_color"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_small"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="我是卖家"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_medium"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/tab05_ibtn_sell"
+                        style="@style/tab05_ibtn_style"
+                        android:background="@drawable/icon_my_sell" />
+
+                    <TextView
+                        android:id="@+id/tab05_tv_sell"
+                        style="@style/tab05_tv_style"
+                        android:text="已售" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/tab05_ibtn_publish"
+                        style="@style/tab05_ibtn_style"
+                        android:background="@drawable/icon_my_publish" />
+
+                    <TextView
+                        android:id="@+id/tab05_tv_publish"
+                        style="@style/tab05_tv_style"
+                        android:text="已发布" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <ImageButton
+                        style="@style/tab05_ibtn_style"
+                        android:background="@drawable/icon_my_collect_people" />
+
+                    <TextView
+                        style="@style/tab05_tv_style"
+                        android:text="关注的人" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/label_color"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_small"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/tab05_ibtn_buy"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_bg_white_rect"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="我是买家"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_large" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="8dp"
+                    android:src="@drawable/arrow_right_grey" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/label_color"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_small" />
+
+            <LinearLayout
+                android:id="@+id/tab05_ibtn_request_my"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_bg_white_rect"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="我的需求"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_large" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="8dp"
+                    android:src="@drawable/arrow_right_grey" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/label_color" />
+
+            <LinearLayout
+                android:id="@+id/tab05_ibtn_request_ta"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_bg_white_rect"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Ta的需求"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_large" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="8dp"
+                    android:src="@drawable/arrow_right_grey" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/label_color"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_small" />
+
+            <LinearLayout
+                android:id="@+id/tab05_ibtn_verify"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_bg_white_rect"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="个人认证"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_large" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="8dp"
+                    android:src="@drawable/arrow_right_grey" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/label_color" />
+
+            <LinearLayout
+                android:id="@+id/tab05_ibtn_phone"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_bg_white_rect"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="联系客服"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_large" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="8dp"
+                    android:src="@drawable/arrow_right_grey" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/label_color" />
+
+            <LinearLayout
+                android:id="@+id/tab05_ibtn_set"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_bg_white_rect"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="设  置"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_large" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="8dp"
+                    android:src="@drawable/arrow_right_grey" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:text="" />
+        </LinearLayout>
+    </com.szdd.qianxun.tools.views.SpringScrollView>
+
+</LinearLayout>

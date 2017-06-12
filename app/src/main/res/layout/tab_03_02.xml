@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/asxml"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f3f3"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/applysuccessxml"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#f2f3f3"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/tab_03_back_success"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/yellow"
+                android:padding="10dp"
+                android:src="@drawable/arrow_left_white" />
+
+            <TextView
+                android:id="@+id/applysuccess_tabtop"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/yellow"
+                android:gravity="center"
+                android:text="Jerry的需求"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:typeface="normal" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/yellow" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/applysuccess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="40dp"
+
+                android:gravity="center"
+                android:text="您已报名成功，请等待对方确认。"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:typeface="normal" />
+
+            <Button
+                android:id="@+id/cancelapply"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/applysuccess"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="40dp"
+                android:background="@color/red"
+                android:gravity="center"
+                android:text="取消报名"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/chatwith"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/applysuccess"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="40dp"
+                android:background="@color/main_yellow"
+                android:gravity="center"
+                android:text="与Ta联系"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/applynumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text=""
+                android:textColor="#ec2121"
+                android:textSize="20sp"
+                android:typeface="normal" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/applynumber"
+                android:layout_toRightOf="@+id/applynumber"
+                android:text="人已报名。"
+                android:textSize="15sp"
+                android:typeface="normal" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <com.szdd.qianxun.bank.LoadMoreListView
+            android:id="@+id/lmListView_02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>
+    

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/start_top" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/msg_friend_list_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="正在加载……"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:textSize="24sp" />
+
+        <ListView
+            android:id="@+id/msg_friend_list_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#DBDBDB"
+            android:dividerHeight="1dp"
+            android:padding="3dp"
+            android:scrollbars="vertical" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.szdd.qianxun.tools.views.xlist.XListView
+        android:id="@+id/push_other_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/light_gray"
+        android:dividerHeight="16dp" />
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/start_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <include
+            android:id="@+id/umeng_fb_contact_title"
+            layout="@layout/umeng_fb_reply_item_text" />
+
+        <ImageView
+            android:id="@+id/umeng_fb_action_collapse"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/umeng_fb_contact_info"
+            android:src="@drawable/shape_null" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.szdd.qianxun.tools.views.SpringScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/main_menu_head_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+
+            <com.joooonho.SelectableRoundedImageView
+                android:id="@+id/main_menu_head_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/head_icon_default"
+                app:sriv_left_bottom_corner_radius="25dp"
+                app:sriv_left_top_corner_radius="25dp"
+                app:sriv_oval="true"
+                app:sriv_right_bottom_corner_radius="25dp"
+                app:sriv_right_top_corner_radius="25dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/main_menu_head_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Loading……"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/main_menu_head_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text=""
+                    android:textColor="#EEE"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="2dp"
+            android:background="#DBDBDB" />
+
+        <ListView
+            android:id="@+id/main_menu_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#DBDBDB"
+            android:dividerHeight="1dp"
+            android:padding="3dp"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+</com.szdd.qianxun.tools.views.SpringScrollView>

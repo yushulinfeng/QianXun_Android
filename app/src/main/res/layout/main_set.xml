@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/label_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/start_top" />
+
+    <com.szdd.qianxun.tools.views.SpringScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="5dp">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/tab05_btn_push_collect"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/btn_bg_white_rect"
+                        android:gravity="start|center_vertical"
+                        android:padding="10dp"
+                        android:text="通知提醒"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <ToggleButton
+                        android:id="@+id/tab05_tbtn_push_collect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:background="@null"
+                        android:checked="true"
+                        android:textColor="@color/light_blue"
+                        android:textOff="已关闭"
+                        android:textOn="已开启" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/msg_info_divider" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/tab05_btn_msg_voice"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/btn_bg_white_rect"
+                        android:gravity="start|center_vertical"
+                        android:padding="10dp"
+                        android:text="消息声音提醒"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <ToggleButton
+                        android:id="@+id/tab05_tbtn_msg_voice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:background="@null"
+                        android:checked="true"
+                        android:textColor="@color/light_blue"
+                        android:textOff="已关闭"
+                        android:textOn="已开启" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/msg_info_divider" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/tab05_btn_msg_verb"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/btn_bg_white_rect"
+                        android:gravity="start|center_vertical"
+                        android:padding="10dp"
+                        android:text="消息震动提醒"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <ToggleButton
+                        android:id="@+id/tab05_tbtn_msg_verb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:background="@null"
+                        android:checked="true"
+                        android:textColor="@color/light_blue"
+                        android:textOff="已关闭"
+                        android:textOn="已开启" />
+                </FrameLayout>
+
+
+                <Button
+                    android:id="@+id/tab05_btn_font"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/btn_bg_white_rect"
+                    android:gravity="start|center_vertical"
+                    android:padding="10dp"
+                    android:text="切换字体"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/msg_info_divider" />
+
+                <Button
+                    android:id="@+id/tab05_btn_version"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/btn_bg_white_rect"
+                    android:gravity="start|center_vertical"
+                    android:padding="10dp"
+                    android:text="检查更新"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/msg_info_divider" />
+
+                <Button
+                    android:id="@+id/tab05_btn_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/btn_bg_white_rect"
+                    android:gravity="start|center_vertical"
+                    android:padding="10dp"
+                    android:text="意见反馈"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/msg_info_divider" />
+
+                <Button
+                    android:id="@+id/tab05_btn_cleancache"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/btn_bg_white_rect"
+                    android:gravity="start|center_vertical"
+                    android:padding="10dp"
+                    android:text="清除缓存"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/msg_info_divider" />
+
+                <Button
+                    android:id="@+id/tab05_btn_aboutme"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/btn_bg_white_rect"
+                    android:gravity="start|center_vertical"
+                    android:padding="10dp"
+                    android:text="关于软件"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/msg_info_divider" />
+
+                <Button
+                    android:id="@+id/tab05_btn_exit"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/btn_bg_white_rect"
+                    android:gravity="start|center_vertical"
+                    android:padding="10dp"
+                    android:text="退出程序"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/msg_info_divider" />
+
+                <Button
+                    android:id="@+id/tab05_btn_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/btn_bg_white_rect"
+                    android:gravity="start|center_vertical"
+                    android:padding="10dp"
+                    android:text="注销登录"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:text="" />
+        </LinearLayout>
+    </com.szdd.qianxun.tools.views.SpringScrollView>
+
+</LinearLayout>

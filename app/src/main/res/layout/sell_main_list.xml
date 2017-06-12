@@ -1,0 +1,12 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.szdd.qianxun.tools.views.xlist.XListView
+        android:id="@+id/sell_main_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/label_color"
+        android:dividerHeight="5dp" />
+
+</FrameLayout>

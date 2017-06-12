@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.szdd.qianxun.tools.views.slidepage.SimpleSwipeRefreshLayout
+        android:id="@+id/swipelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.szdd.qianxun.tools.views.slidepage.ScrollableLayout
+            android:id="@+id/scrollableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/sell_main_topview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.szdd.qianxun.tools.views.slidepage.PagerSlidingTabStrip
+                android:id="@+id/pagerStrip"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_alignParentBottom="true" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.szdd.qianxun.tools.views.slidepage.ScrollableLayout>
+
+    </com.szdd.qianxun.tools.views.slidepage.SimpleSwipeRefreshLayout>
+
+</LinearLayout>

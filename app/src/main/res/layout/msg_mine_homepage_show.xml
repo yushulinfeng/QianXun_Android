@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/mine_homepage_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/homepage_background_yellow">
+
+        <Button
+            android:id="@+id/mine_homepage_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/arrow_left_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:paddingBottom="10dp"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:paddingTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="个人主页" />
+
+        <Button
+            android:id="@+id/mine_homepage_threeline"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/three_line" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/mine_homepage_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/dynamic_post_line_gray" />
+
+        <Button
+            android:id="@+id/mine_homepage_alter"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/homepage_background_yellow"
+            android:gravity="center"
+            android:text="修改资料"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/mine_homepage_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/mine_homepage_chat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/mine_homepage_chat" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="聊天"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/mine_homepage_attention"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.szdd.qianxun.tools.views.slidepage.SimpleSwipeRefreshLayout
+        android:id="@+id/mine_homepage_swipelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/mine_homepage_layout2"
+        android:layout_below="@id/mine_homepage_layout1">
+
+        <com.szdd.qianxun.tools.views.slidepage.ScrollableLayout
+            android:id="@+id/mine_homepage_sv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+                <ImageView
+                    android:id="@+id/mine_homepage_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="302dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/mine_homepage_outwhite">
+
+                    <com.szdd.qianxun.tools.views.RoundView
+                        android:id="@+id/mine_homepage_head"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:scaleType="centerCrop" />
+
+                    <TextView
+                        android:id="@+id/mine_homepage_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/mine_homepage_head"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/mine_homepage_sex"
+                        android:layout_width="12sp"
+                        android:layout_height="12sp"
+                        android:layout_alignBottom="@id/mine_homepage_name"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toEndOf="@id/mine_homepage_name"
+                        android:layout_toRightOf="@id/mine_homepage_name" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/mine_homepage_name"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/mine_homepage_level"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/mine_homepage_o1"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:padding="1dp"
+                                android:src="@drawable/little_orange"
+                                android:visibility="gone" />
+
+                            <ImageView
+                                android:id="@+id/mine_homepage_o2"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:padding="1dp"
+                                android:src="@drawable/little_orange"
+                                android:visibility="gone" />
+
+                            <ImageView
+                                android:id="@+id/mine_homepage_o3"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:padding="1dp"
+                                android:src="@drawable/little_orange"
+                                android:visibility="gone" />
+
+                            <ImageView
+                                android:id="@+id/mine_homepage_o4"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:padding="1dp"
+                                android:src="@drawable/little_orange"
+                                android:visibility="gone" />
+
+                            <ImageView
+                                android:id="@+id/mine_homepage_o5"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:padding="1dp"
+                                android:src="@drawable/little_orange"
+                                android:visibility="gone" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/mine_homepage_realname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/mine_homepage_btn_shape"
+                                android:paddingBottom="2dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:paddingTop="2dp"
+                                android:text="已实名认证"
+                                android:textColor="@color/white"
+                                android:textSize="8sp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/mine_homepage_realstudent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/mine_homepage_btn_shape"
+                                android:paddingBottom="2dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:paddingTop="2dp"
+                                android:text="已学生认证"
+                                android:textColor="@color/white"
+                                android:textSize="8sp"
+                                android:visibility="gone" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/mine_homepage_layout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/mine_homepage_tab"
+                    android:layout_width="60dp"
+                    android:layout_height="2dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@color/homepage_background_yellow" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:visibility="gone"
+                        android:id="@+id/mine_homepage_service_btn"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:text="服务"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/mine_homepage_personal_btn"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:text="个人"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/mine_homepage_request_btn"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:text="需求"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/mine_homepage_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.szdd.qianxun.tools.views.slidepage.ScrollableLayout>
+    </com.szdd.qianxun.tools.views.slidepage.SimpleSwipeRefreshLayout>
+</RelativeLayout>

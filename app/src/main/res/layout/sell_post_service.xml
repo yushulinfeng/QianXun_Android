@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/order_detail_title_height"
+        android:background="@color/yellow"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/post_service_iv_back"
+            android:layout_width="@dimen/order_detail_content_height"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:src="@drawable/arrow_left_black" />
+
+        <TextView
+            android:layout_width="@dimen/text_title"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="发布服务"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="@dimen/order_detail_content_height"
+            android:layout_height="match_parent"
+            android:padding="15dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#DEDEDE" />
+
+            <LinearLayout
+                android:id="@+id/post_service_chose_sort"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="选择分类："
+                    android:textColor="@color/waveform_selected_left"
+                    android:textSize="@dimen/text_large" />
+
+                <Button
+                    android:id="@+id/post_service_sort_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/shape_post_service_btn_sort"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="3dp"
+                    android:text=""
+                    android:textColor="@color/text_sort_color"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:padding="12dp"
+                    android:src="@drawable/arrow_right_grey" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="10dp"
+                android:background="#DEDEDE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="技能·"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_large" />
+
+                <EditText
+                    android:id="@+id/post_service_edit_skill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="如摄影、教烘焙..."
+                    android:maxLength="8"
+                    android:textColorHint="@color/bg_gray"
+                    android:textSize="@dimen/text_medium" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="10dp"
+                android:background="#DEDEDE" />
+
+
+            <EditText
+                android:id="@+id/post_service_edit_content"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="如摄影、教烘焙..."
+                android:inputType="text"
+                android:lines="3"
+                android:maxLength="300"
+                android:padding="10dp"
+                android:textColor="@color/waveform_selected_left"
+                android:textColorHint="@color/bg_gray"
+                android:textSize="@dimen/text_medium" />
+
+
+            <com.szdd.qianxun.service.MyGridView
+                android:id="@+id/post_service_gridView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="true"
+                android:horizontalSpacing="3dp"
+                android:numColumns="4"
+                android:padding="3dp"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="3dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/post_service_location" />
+
+                <TextView
+                    android:id="@+id/post_service_tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/shape_post_service_layout_background"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_medium" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#f1f1f1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:text="说出你的酬劳"
+                    android:textSize="@dimen/text_medium" />
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/post_service_iv_selected" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:background="#EBEBEB" />
+
+                    <ImageView
+                        android:id="@+id/iv_2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/post_service_iv_unselected" />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp" />
+
+                    <LinearLayout
+                        android:id="@+id/post_service_layout_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_post_service_layout_background"
+                            android:orientation="horizontal"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp">
+
+                            <EditText
+                                android:id="@+id/post_service_edit_money"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:hint="输入数字"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/text_color_light_gray"
+                                android:textColorHint="@color/white"
+                                android:textSize="@dimen/text_medium" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="3dp"
+                                android:gravity="center"
+                                android:text="RMB"
+                                android:textColor="@color/text_color_light_gray"
+                                android:textSize="@dimen/text_medium" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center"
+                            android:text="/"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+
+                        <EditText
+                            android:id="@+id/post_service_edit_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_post_service_layout_background"
+                            android:hint="如：次、个"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:textColor="@color/text_color_light_gray"
+                            android:textColorHint="@color/white"
+                            android:textSize="@dimen/text_medium" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/post_service_edit_exchange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_post_service_layout_background"
+                        android:hint="请说明您的交换条件"
+                        android:paddingLeft="5dp"
+                        android:textSize="@dimen/text_medium"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#f1f1f1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="服务方式"
+                    android:textSize="@dimen/text_medium" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/post_service_iv_online"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/post_service_iv_unselected"
+                        android:padding="15dp"
+                        android:src="@drawable/post_service_online_unselected" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/post_service_iv_zhiding"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/post_service_iv_unselected"
+                        android:padding="15dp"
+                        android:src="@drawable/post_service_zhiding_unselected" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/post_service_iv_post"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/post_service_iv_unselected"
+                        android:padding="15dp"
+                        android:src="@drawable/post_service_post_unselected" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/post_service_iv_godoor"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/post_service_iv_unselected"
+                        android:padding="15dp"
+                        android:src="@drawable/post_service_godoor_unselected" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/post_service_layout_set_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:text="可服务时间"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/post_service_tv_set_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:text="请设置"
+                            android:textColor="@color/line_divider"
+                            android:textSize="14sp" />
+
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:padding="12dp"
+                            android:src="@drawable/arrow_right_grey" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/line_divider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:text="服务区域："
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/post_service_edit_district"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:gravity="right|center_vertical"
+                            android:hint="请输入..."
+                            android:inputType="text"
+                            android:paddingRight="12dp"
+                            android:textColorHint="@color/bg_gray"
+                            android:textSize="@dimen/sell_order_service_textSize" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/post_service_layout_sort"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="库存情况"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/post_service_btn_sth"
+                        android:layout_width="70dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/shape_post_service_btn_unselected"
+                        android:text="有现货"
+                        android:textColor="#aeb0b1"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/post_service_btn_order"
+                        android:layout_width="70dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/shape_post_service_btn_unselected"
+                        android:text="需定制"
+                        android:textColor="#aeb0b1"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/post_service_btn_post"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="30dp"
+                android:background="@drawable/shape_post_service_btn_state"
+                android:text="发  布"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

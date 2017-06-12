@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/top_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/main_yellow"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/top_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="top">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/top_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="橙果"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_title" />
+
+            <LinearLayout
+                android:id="@+id/top_msg_layout"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/main_top_bg"
+                android:orientation="horizontal"
+                android:padding="1dp"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/top_msg_msg"
+                    android:layout_width="0dp"
+                    android:layout_height="18dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/main_top_msg"
+                    android:enabled="false"
+                    android:text="消息"
+                    android:textColor="@drawable/mian_top_font"
+                    android:textSize="@dimen/text_small" />
+
+                <Button
+                    android:id="@+id/top_msg_push"
+                    android:layout_width="0dp"
+                    android:layout_height="18dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/main_top_push"
+                    android:text="推送"
+                    android:textColor="@drawable/mian_top_font"
+                    android:textSize="@dimen/text_small" />
+            </LinearLayout>
+        </FrameLayout>
+
+
+        <com.szdd.qianxun.tools.views.RoundHeadView
+            android:id="@+id/top_head"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/head_icon_default"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/top_location"
+            android:layout_width="12dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/icon_location_black"
+            android:text=""
+            android:textColor="@drawable/main_top_btn_text"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/top_location_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:gravity="center_vertical"
+            android:text="正在定位……"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_small" />
+
+        <Button
+            android:id="@+id/top_menu"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/icon_ring"
+            android:text=""
+            android:textColor="@drawable/main_top_btn_text"
+            android:textSize="16sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/tab_iv_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/msg_info_divider" />
+
+</LinearLayout>

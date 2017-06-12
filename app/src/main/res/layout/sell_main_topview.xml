@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/sell_top_pager_ad"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@color/white"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/sell_top_pager_circlelayout"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal" />
+    </FrameLayout>
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="5dp"-->
+        <!--android:background="@color/label_color" />-->
+
+    <android.support.v4.view.ViewPager
+        android:visibility="gone"
+        android:id="@+id/sell_top_pager"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="5"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" />
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="5dp"-->
+        <!--android:background="@color/label_color" />-->
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/sell_main_top_ad1"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/sell_top_title_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="许愿树"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_large" />
+
+                <TextView
+                    android:id="@+id/sell_top_text_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:singleLine="true"
+                    android:text="其实，大学并不是你想的那样......"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_small" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/sell_top_img_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_top_next_1" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/label_color" />
+
+        <LinearLayout
+            android:id="@+id/sell_main_top_ad2"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/sell_top_title_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="同学帮"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_large" />
+
+                <TextView
+                    android:id="@+id/sell_top_text_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:singleLine="true"
+                    android:text="你寻了千百度的Ta----就在这里！"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_small" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/sell_top_img_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_top_next_2" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/label_color" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/sell_main_top_ad3"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/sell_top_title_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="微心愿"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_large" />
+
+                <TextView
+                    android:id="@+id/sell_top_text_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:singleLine="true"
+                    android:text="你的愿望，写在树上……"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_small" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/sell_top_img_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_top_next_3" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/label_color" />
+
+        <LinearLayout
+            android:id="@+id/sell_main_top_ad4"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/sell_top_title_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="微团队"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_large" />
+
+                <TextView
+                    android:id="@+id/sell_top_text_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:singleLine="true"
+                    android:text="想知道团队的相关资料吗？"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_small" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/sell_top_img_4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_top_next_4" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@color/label_color" />-->
+
+</LinearLayout>

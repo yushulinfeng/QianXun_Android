@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/service_sort_iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:src="@drawable/arrow_left_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="服务分类"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/post_service_sort_btn_0"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="手绘素描"
+            android:textColor="@color/text_sort_color" />
+
+        <Button
+            android:id="@+id/post_service_sort_btn_1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="陪玩运动"
+            android:textColor="@color/text_sort_color" />
+
+        <Button
+            android:id="@+id/post_service_sort_btn_2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="摄影PS"
+            android:textColor="@color/text_sort_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/post_service_sort_btn_3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="心灵指导"
+            android:textColor="@color/text_sort_color" />
+
+        <Button
+            android:id="@+id/post_service_sort_btn_4"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text=" 手工DIY "
+            android:textColor="@color/text_sort_color" />
+
+        <Button
+            android:id="@+id/post_service_sort_btn_5"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="才艺小屋"
+            android:textColor="@color/text_sort_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/post_service_sort_btn_6"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="学霸课桌"
+            android:textColor="@color/text_sort_color" />
+
+        <Button
+            android:id="@+id/post_service_sort_btn_7"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text=" 乐活族 "
+            android:textColor="@color/text_sort_color" />
+
+        <Button
+            android:id="@+id/post_service_sort_btn_8"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="美妆达人"
+            android:textColor="@color/text_sort_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/post_service_sort_btn_9"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="商业专场"
+            android:textColor="@color/text_sort_color" />
+
+        <Button
+            android:id="@+id/post_service_sort_btn_10"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text=" 租赁园 "
+            android:textColor="@color/text_sort_color" />
+
+        <Button
+            android:id="@+id/post_service_sort_btn_11"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="闲置宝贝"
+            android:textColor="@color/text_sort_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/post_service_sort_btn_12"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="零食水果"
+            android:textColor="@color/text_sort_color" />
+
+        <Button
+            android:id="@+id/post_service_sort_btn_13"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="代办跑腿"
+            android:textColor="@color/text_sort_color" />
+
+        <Button
+            android:id="@+id/post_service_sort_btn_14"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_post_service_btn_sort"
+            android:text="更多精彩"
+            android:textColor="@color/text_sort_color" />
+    </LinearLayout>
+</LinearLayout>

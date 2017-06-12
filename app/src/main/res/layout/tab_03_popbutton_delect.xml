@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_popbutton_rectangle_top"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/popbt_reward"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/popbt_delect_01_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:src="@drawable/girl" />
+
+        <TextView
+            android:id="@+id/popbt_delect_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/popbt_delect_01_icon"
+            android:gravity="center"
+            android:text="筛选1"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/popbt_delect_01"
+            android:background="#CDCDB4" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/popbt_delect_02_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:src="@drawable/girl" />
+
+        <TextView
+            android:id="@+id/popbt_delect_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/popbt_delect_02_icon"
+            android:gravity="center"
+            android:text="筛选2"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/popbt_delect_02"
+            android:background="#CDCDB4" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/popbt_delect_03_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:src="@drawable/girl" />
+
+        <TextView
+            android:id="@+id/popbt_delect_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/popbt_delect_03_icon"
+            android:gravity="center"
+            android:text="筛选3"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/popbt_delect_03"
+            android:background="#CDCDB4" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/popbt_delect_04_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:src="@drawable/girl" />
+
+        <TextView
+            android:id="@+id/popbt_delect_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/popbt_delect_04_icon"
+            android:gravity="center"
+            android:text="筛选4"
+            android:textSize="20sp" />
+
+        
+    </RelativeLayout>
+    
+
+</LinearLayout>

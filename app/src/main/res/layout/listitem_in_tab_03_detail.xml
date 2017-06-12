@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tab_center_bg">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/tab_center_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/main_yellow"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/tab_03_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/main_yellow"
+                android:padding="10dp"
+                android:src="@drawable/arrow_left_white" />
+
+            <TextView
+                android:id="@+id/top_text_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/main_yellow"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Jerry的需求"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/main_yellow" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.szdd.qianxun.tools.views.RoundHeadView
+                android:id="@+id/otheruserheadview_detail"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mascot_orange" />
+
+            <View
+                android:id="@+id/line_detail01"
+                android:layout_width="1dip"
+                android:layout_height="90dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@id/otheruserheadview_detail"
+                android:background="#EAEAEA"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/users_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/line_detail01"
+                android:layout_marginLeft="40dp"
+                android:layout_toRightOf="@id/line_detail01"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="昵称： Jenny"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/sex_detail"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignTop="@id/users_detail"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@id/users_detail"
+                android:gravity="center"
+                android:src="@drawable/girl" />
+
+            <TextView
+                android:id="@+id/users_count_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/users_detail"
+                android:layout_below="@id/users_detail"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="账号： 1234567"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/users_runk_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/users_count_detail"
+                android:layout_below="@id/users_count_detail"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="信誉等级： 3"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="1sp"
+                android:layout_weight="1"
+                android:background="@color/dark_white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="详细内容"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="10sp"
+                android:textColor="@color/dark_white" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="1sp"
+                android:layout_weight="1"
+                android:background="@color/dark_white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/decribe_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:text="帮忙去泉城广场买一个很可爱的卡通抱枕"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/decribe_icon_detail01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:adjustViewBounds="true"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/decribe_icon_detail02"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/decribe_icon_detail03"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:adjustViewBounds="true"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:id="@+id/reward_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="酬劳:   "
+                android:textColor="@color/main_yellow"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/reward_content_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/reward_detail"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/reward_detail"
+                android:lineSpacingExtra="5dp"
+                android:text="￥8+￥一本老人与海"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/apply_detail"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_margin="50dp"
+                android:background="@drawable/shape_task_completed_btn_agree"
+                android:gravity="center"
+                android:text="报名"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/report_detail"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_margin="50dp"
+                android:background="@drawable/shape_task_completed_btn_agree"
+                android:gravity="center"
+                android:text="联系Ta"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

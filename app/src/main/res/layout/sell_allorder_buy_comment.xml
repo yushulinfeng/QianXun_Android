@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white">
+
+        <com.joooonho.SelectableRoundedImageView
+            android:id="@+id/allorder_buy_comment_rhv_headview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/mascot_orange"
+            app:sriv_left_bottom_corner_radius="20dp"
+            app:sriv_left_top_corner_radius="20dp"
+            app:sriv_oval="true"
+            app:sriv_right_bottom_corner_radius="20dp"
+            app:sriv_right_top_corner_radius="20dp" />
+
+        <TextView
+            android:id="@+id/allorder_buy_comment_tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/allorder_buy_comment_rhv_headview"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="14dp"
+            android:layout_toRightOf="@id/allorder_buy_comment_rhv_headview"
+            android:text="驻地驻地"
+            android:textSize="@dimen/text_large" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/allorder_buy_comment_tv_nickname"
+            android:layout_marginRight="20dp"
+            android:text="订单已支付"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_large" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1px"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+        android:background="@color/gray" />
+
+    <RelativeLayout
+        android:id="@+id/allorder_buy_comment_RL"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/allorder_buy_comment_iv_describe"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/mascot_orange2" />
+
+        <TextView
+            android:id="@+id/allorder_buy_comment_tv_progect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/allorder_buy_comment_iv_describe"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/allorder_buy_comment_iv_describe"
+            android:text="项目："
+            android:textSize="@dimen/text_medium" />
+
+        <TextView
+            android:id="@+id/allorder_buy_comment_tv_progectcontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/allorder_buy_comment_tv_progect"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/allorder_buy_comment_tv_progect"
+            android:text="沙丘"
+            android:textSize="@dimen/text_medium" />
+
+        <TextView
+            android:id="@+id/allorder_buy_comment_tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/allorder_buy_comment_tv_progect"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/allorder_buy_comment_iv_describe"
+            android:text="价格："
+            android:textSize="@dimen/text_medium" />
+
+        <TextView
+            android:id="@+id/allorder_buy_comment_tv_pricecontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/allorder_buy_comment_tv_price"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/allorder_buy_comment_tv_price"
+            android:text="22.00元/次"
+            android:textSize="@dimen/text_medium" />
+
+        <TextView
+            android:id="@+id/allorder_buy_comment_tv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/allorder_buy_comment_tv_price"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/allorder_buy_comment_iv_describe"
+            android:text="数量："
+            android:textSize="@dimen/text_medium" />
+
+        <TextView
+            android:id="@+id/allorder_buy_comment_tv_numbercontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/allorder_buy_comment_tv_number"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/allorder_buy_comment_tv_number"
+            android:text="1次"
+            android:textSize="@dimen/text_medium" />
+
+        <TextView
+            android:id="@+id/allorder_buy_comment_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/allorder_buy_comment_tv_number"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/allorder_buy_comment_iv_describe"
+            android:text="时间："
+            android:textSize="@dimen/text_medium" />
+
+        <TextView
+            android:id="@+id/allorder_buy_comment_tv_timecontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/allorder_buy_comment_tv_time"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/allorder_buy_comment_tv_time"
+            android:text="2016-03-26 10：56"
+            android:textSize="@dimen/text_medium" />
+
+        <TextView
+            android:id="@+id/allorder_buy_comment_tv_connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/allorder_buy_comment_tv_time"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/allorder_buy_comment_iv_describe"
+            android:text="联系方式："
+            android:textSize="@dimen/text_medium" />
+
+        <TextView
+            android:id="@+id/allorder_buy_comment_tv_connectcontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/allorder_buy_comment_tv_connect"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/allorder_buy_comment_tv_connect"
+            android:text="无"
+            android:textSize="@dimen/text_medium" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1px"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/white">
+
+        <Button
+            android:id="@+id/allorder_buy_comment_btn_comment"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/btn_allorder_border"
+            android:text="申请退款"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/text_large" />
+
+        <Button
+            android:id="@+id/allorder_buy_comment_btn_finish"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_alignTop="@id/allorder_buy_comment_btn_comment"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@id/allorder_buy_comment_btn_comment"
+            android:background="@drawable/btn_allorder_border"
+            android:text="完成"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/text_large" />
+    </RelativeLayout>
+
+
+</LinearLayout>

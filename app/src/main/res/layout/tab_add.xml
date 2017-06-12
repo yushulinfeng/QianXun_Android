@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tab_add_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/tab_add_btn_request"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="-200px"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/btn_post_request" />
+
+        <Button
+            android:id="@+id/tab_add_btn_show"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="-200px"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/btn_post_dynamic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/tab_add_btn_request2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="200px"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/btn_post_request"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/tab_add_btn_show2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="20px"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/btn_post_dynamic"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/tab_add_btn_cancel"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="65dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/icon_add_cancel"
+        android:textSize="16sp" />
+
+</FrameLayout>
