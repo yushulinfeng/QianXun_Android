@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:background="@color/aliwx_common_bg_color"
+        android:minHeight="100dp"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/aliwx_head_default" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:layout_marginLeft="@dimen/aliwx_column_top_margin"
+            android:layout_toRightOf="@+id/head"
+            android:text="由于不设定占位符，会直接不响应match_parent，所以使用这个来占位保证宽度"
+            android:textColor="@color/transparent"
+            android:textSize="@dimen/aliwx_font_first_grade" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/aliwx_column_top_margin"
+            android:layout_toRightOf="@+id/head"
+            android:text="文本"
+            android:textColor="@color/aliwx_black"
+            android:textSize="@dimen/aliwx_font_first_grade" />
+    </RelativeLayout>
+
+</LinearLayout>
