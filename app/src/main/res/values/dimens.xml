@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Qianxun -->
+    <dimen name="tab_bottom_text_size">10sp</dimen>
+    <dimen name="slidingmenu_offset">150dp</dimen>
+    <dimen name="shadow_width">15dp</dimen>
+    <dimen name="text_small">10sp</dimen>
+    <dimen name="text_medium">12sp</dimen>
+    <dimen name="text_large">14sp</dimen>
+    <dimen name="text_title">18sp</dimen>
+    <!-- RecycleView -->
+    <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
+    <dimen name="order_detail_content_height">60dp</dimen>
+    <dimen name="order_detail_title_height">50dp</dimen>
+    <dimen name="order_detail_textSize_noChange">18sp</dimen>
+    <dimen name="order_detail_textSize_Change">15sp</dimen>
+    <dimen name="sell_order_service_headicon_height">40dp</dimen>
+    <dimen name="sell_order_service_textSize">14sp</dimen>
+
+	<!--BaiChuan-->
+    <dimen name="hint_text_view_height">40dip</dimen>
+    <dimen name="title_bar_height">45dip</dimen>
+
+</resources>
