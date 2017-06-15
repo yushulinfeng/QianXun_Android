@@ -1,6 +1,118 @@
 <resources>
 
-    <style name="AppTheme" parent="@android:style/Theme.Light">
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light"></style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+
+        <!-- 无标题栏 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 使用原版风格的Button -->
+        <item name="android:buttonStyle">@android:style/Widget.Button</item>
+        <!-- 使用默认的文本框光标 -->
+        <item name="android:textCursorDrawable">@null</item>
+        <!-- 使用原版风格的EditText -->
+        <item name="android:editTextBackground">@android:drawable/edit_text</item>
+        <!-- 使用淡入淡出动画 -->
+        <item name="android:windowAnimationStyle">@style/fadeActivityTheme</item>
+        <!-- 禁用标题栏下的阴影 -->
+        <item name="android:windowContentOverlay">@null</item>
+
+        <item name="android:typeface">monospace</item>
+    </style>
+
+    <!-- 放大图片 -->
+    <style name="myTransparent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="AnimationFade">
+
+        <!-- PopupWindow左右弹出的效果 -->
+        <item name="android:windowEnterAnimation">@anim/popshow_anim</item>
+        <item name="android:windowExitAnimation">@anim/pophidden_anim</item>
+    </style>
+
+    <!-- Light theme. -->
+    <style name="LightTheme" parent="AppBaseTheme">
+
+        <!-- 无标题栏 -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- Dark theme. -->
+    <style name="DarkTheme" parent="android:Theme.NoTitleBar"></style>
+
+    <!-- Dialog theme. -->
+    <style name="MyDialogTheme" parent="android:style/Theme.Dialog">
+
+        <!-- 背景颜色及透明程度 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 是否没有标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!-- Map Dialog theme. -->
+    <style name="MyMapDialogTheme" parent="@style/MyDialogTheme">
+
+        <!-- 是否模糊 -->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <!-- 底部对话框动画 -->
+    <style name="bottomDialogAnim" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="@android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+    <!-- 淡入淡出动画 -->
+    <style name="fadeActivityTheme" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <!-- 我的界面按钮 -->
+    <style name="tab05_ibtn_style">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:src">@drawable/ibtn_click_src</item>
+    </style>
+
+    <style name="tab05_tv_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="anim_popup_dir">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
+
+    //发动态选择的dialog
+    <style name="dynamic_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:background">@drawable/post_dynamic_dialog_shape</item><!--dialog背景样式-->
+        <item name="android:windowBackground">@color/transparent</item><!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
     </style>
 
 </resources>

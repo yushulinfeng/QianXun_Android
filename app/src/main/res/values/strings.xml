@@ -1,3 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">QianXun_Android</string>
+
+    <string name="app_name">千寻</string>
+    <!-- 可下拉刷新列表 -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载···</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+
+	<!--BaiChuan-->
+	<string name="app_key">23352754</string>
+    <string name="umeng_appkey">563ed6dc67e58ef259002fc6</string>
+    <string name="umeng_message">41abf1e5b164320dd0f1a728b8789932</string>
+ 
 </resources>
