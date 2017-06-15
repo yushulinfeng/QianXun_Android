@@ -1,19 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.szdd.qianxun">
 
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="22" />
+
+    <!-- 这些权限暂时不要申请： -->
+    <!-- 暂不需要此权限，而且部分用户反映很反感这样 -->
+    <!--<uses-permission android:name="android.permission.READ_CONTACTS" />-->
+    <!-- 使用相机硬件 -->
+    <!--<uses-feature-->
+    <!--android:name="android.hardware.camera"-->
+    <!--android:required="true" />-->
+    <!-- MOB -->
+    <!--<uses-permission android:name="android.permission.RECEIVE_SMS" />-->
+    <!-- 通话权限 -->
+    <!--<uses-permission android:name="android.permission.CALL_PHONE" />-->
+    <!-- UM_Message -->
+    <!--<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />-->
+    <!-- MAP_location_map -->
+    <!--<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />-->
+    <!-- 基础 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- MAP_location_map -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <!-- IM -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 社区 -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
     <application
+        android:name=".main_main.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:largeHeap="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon, android:theme">
+        <activity
+            android:name=".start.welcome.Welcome"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".main_main.MainMain"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main_main.MainTabAdd"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogTheme" />
+        <activity
+            android:name=".start.welcome.FirstRun"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".start.login.Login"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".start.register.Register1"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".start.register.Register2"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".start.register.Register3"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".start.forget.ForgetMenu"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogTheme" />
+        <activity
+            android:name=".start.forget.ForgetMessage"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".start.forget.ForgetFind1"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".start.forget.ForgetFind2"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".message.friend.FriendList"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".message.friend.FriendListBook"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".message.info.AlterAllInfo"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".message.info.ShowAllInfo"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".message.info.credit.RealNameCheck"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".message.info.SchoolInfo"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".message.info.credit.RealStudentCheck"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".more.AlterPass"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".more.UserVerify"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".more.MyCollect"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".more.MyPublish"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".more.RequestMy"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".more.RequestTa"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".more.AboutMe"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".more.MainSet"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".tools.bitmap.MultiBitmap"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Aliwx_ConverationStyle_default" />
+        <activity
+            android:name=".sell.category.SellCategoryDetail"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sell.orders.SellAllOrderBuy"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sell.orders.SellAllOrderSell"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sell.main.WebBrowser"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".message.homepage.MineHomePage"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".dynamic.PostDynamic"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".dynamic.DynamicDetail"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".bank.BigImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/myTransparent" />
+        <activity
+            android:name=".bank.MainTab_03_ApplySuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".bank.MainTab_03_RequestDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".bank.Location_MainTab_03Activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".sell.orders.detail.ServiceDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sell.orders.detail.ServiceDetailCollecterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".request.Task_completed"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".request.PostRequest"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <activity
+            android:name=".request.ApplyDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".request.Activity_Task_doing"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".request.Task_doing_Ta"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".service.PostServiceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".service.PostServiceAddPictureActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".service.SetTimeActivity" />
+        <activity
+            android:name=".service.SellOrderDetailActivityBuy"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".service.SellOrderDetailActivitySale"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".service.ServiceSortActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".service.OrderServiceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".advertise.VideoPlayer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".advertise.ZoomImage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".advertise.MoreImagesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".dynamic.SelectService"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".dynamic.AddPictureActivityDynamic"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".message.info.credit.AlipayCheck"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main_main.TestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".tools.alipay.PayDemoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sell.CashBalanceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sell.CashBalanceDetial"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sell.orders.sale.SaleRefuseOrder"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sell.orders.buy.BuyRefund"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sell.discuss.DiscussActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- /////////////////// UM_IM /////////////////// -->
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="QianXun" />
+        <meta-data
+            android:name="APP_KEY"
+            android:value="@string/app_key" />
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="@string/umeng_appkey" />
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="@string/umeng_message" />
+
+        <!-- /////////////////// UM_Feedback /////////////////// -->
+        <activity
+            android:name="com.szdd.qianxun.more.FeedBack"
+            android:label="@string/umeng_fb_title"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+
+        <activity
+            android:name="com.umeng.fb.HelpActivity"
+            android:label="@string/umeng_fb_title"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- ////////////////////MAP_location//////////////////// -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="ruxRSx3OsuZinKMKeCjqF82R" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <!-- ////////////////////BD_Update//////////////////// -->
+        <meta-data
+            android:name="BDAPPID"
+            android:value="8099838" />
+        <meta-data
+            android:name="BDAPPKEY"
+            android:value="yND2WshdG45XpqtgN9wDs5REShgi6XHp" />
+
+        <activity
+            android:name="com.baidu.autoupdatesdk.ConfirmDialoigActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/bdp_update_dialog_style_fullscreen" />
+        <receiver
+            android:name="com.baidu.autoupdatesdk.receiver.BDBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.baidu.autoupdatesdk.ACTION_NEW_UPDATE" />
+                <action android:name="com.baidu.autoupdatesdk.ACTION_DOWNLOAD_COMPLETE" />
+                <action android:name="com.baidu.autoupdatesdk.ACTION_NEW_AS" />
+                <action android:name="com.baidu.autoupdatesdk.ACTION_AS_DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="BaiduMobAd_STAT_ID"
+            android:value="yND2WshdG45XpqtgN9wDs5REShgi6XHp" />
+        <meta-data
+            android:name="BaiduMobAd_CHANNEL"
+            android:value="BaiduMarket" />
+
+        <receiver android:name="com.baidu.bottom.service.BottomReceiver">
+            <intent-filter>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+                <action android:name="android.net.wifi.SCAN_RESULTS" />
+            </intent-filter>
+        </receiver>
+        <!-- MOB -->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+
+        <!-- BaiChuan -->
+        <!--聊天窗口-->
+        <activity
+            android:name="com.alibaba.mobileim.ui.WxChattingActvity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Aliwx_ChattingDetailStyle_default"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!--最近会话列表-->
+        <activity
+            android:name="com.alibaba.mobileim.ui.WxConversationActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Aliwx_ConverationStyle_default" />
+
+        <!--多图查看窗口-->
+        <activity
+            android:name="com.alibaba.mobileim.ui.chat.MultiImageActivity"
+            android:hardwareAccelerated="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="sensor"
+            android:theme="@style/Aliwx_ContentOverlay_default"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.alibaba.mobileim.kit.imageviewer.ShowImageActivity"
+            android:hardwareAccelerated="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Aliwx_ContentOverlay_default"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.alibaba.mobileim.ui.multi.lightservice.MultiPickGalleryActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Aliwx_ConverationStyle_default" />
+
+        <!--故障诊断-->
+        <service
+            android:name="com.alibaba.mobileim.appmonitor.tiptool.TooltipService"
+            android:exported="false" />
+
+        <!--数据通道-->
+        <service
+            android:name="com.alibaba.tcms.service.TCMSService"
+            android:exported="true"
+            android:process=":TcmsService" />
+
+        <!-- 用于接收从TCMSService发送的命令 -->
+        <service
+            android:name="com.alibaba.tcms.service.ListenerService"
+            android:exported="true" />
+
+        <!--漫游密码输入，三方用户不需要这个Activity-->
+        <activity
+            android:name="com.alibaba.mobileim.kit.CloudPwdSettingHintActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Aliwx_ConverationStyle_default" />
+
+        <!--交易组件跳转窗口，即点击旺旺水滴跳OpenIM窗口-->
+        <activity
+            android:name="com.alibaba.mobileim.login.WaitProgresssActivity"
+            android:screenOrientation="portrait" />
+
+        <!--@消息相关-->
+        <activity
+            android:name="com.alibaba.mobileim.ui.atmessage.AtMsgListActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Aliwx_ConverationStyle_default" />
+
+        <activity
+            android:name="com.alibaba.mobileim.ui.atmessage.SendAtMessageDetailActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Aliwx_ConverationStyle_default" />
+
+        <activity
+            android:name="com.alibaba.mobileim.kit.chat.SelectTribeMemberActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Aliwx_ConverationStyle_default"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <activity
+            android:name="com.alibaba.mobileim.kit.chat.EnlargeChattingTextActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <activity
+            android:name="com.alibaba.tcms.service.MonitorActivity"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:process=":TcmsService"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" />
+
     </application>
 
 </manifest>
