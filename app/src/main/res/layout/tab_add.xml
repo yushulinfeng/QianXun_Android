@@ -40,7 +40,7 @@
             android:layout_marginBottom="200px"
             android:layout_marginRight="40dp"
             android:background="@drawable/btn_post_request"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/tab_add_btn_show2"
@@ -49,7 +49,7 @@
             android:layout_marginBottom="20px"
             android:layout_marginRight="50dp"
             android:background="@drawable/btn_post_dynamic"
-            android:visibility="invisible" />
+            android:visibility="visible" />
     </LinearLayout>
 
     <Button

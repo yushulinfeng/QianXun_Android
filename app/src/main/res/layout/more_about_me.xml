@@ -32,7 +32,7 @@
             android:id="@+id/more_company"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="济南橙萌网络科技有限公司"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -40,7 +40,7 @@
             android:id="@+id/more_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2016.05.20"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="14sp" />
     </LinearLayout>

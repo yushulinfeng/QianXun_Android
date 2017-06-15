@@ -19,7 +19,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/left_arrowhead" />
+            android:background="@drawable/arrow_left_white" />
 
         <com.joooonho.SelectableRoundedImageView
             android:id="@+id/post_dynamic_head"
@@ -94,7 +94,8 @@
         <RelativeLayout
             android:id="@+id/post_dynamic_layout"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/post_dynamic_addservice"

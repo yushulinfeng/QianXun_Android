@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/mine_homepage_layout1"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@color/homepage_background_yellow">
 
         <Button
@@ -22,7 +22,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
             android:paddingBottom="10dp"
             android:textColor="#ffffff"
             android:textSize="18sp"

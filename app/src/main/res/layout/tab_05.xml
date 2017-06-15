@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/tab_center_bg"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:padding="5dp">
 
                 <com.joooonho.SelectableRoundedImageView
@@ -49,6 +49,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <TextView
@@ -71,6 +72,7 @@
                     </LinearLayout>
 
                     <FrameLayout
+                        android:layout_gravity="center_horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="30dp">
 
@@ -78,6 +80,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:layout_gravity="center_vertical"
                             android:orientation="horizontal">
 
@@ -151,7 +154,7 @@
                     <TextView
                         android:id="@+id/tab05_tv_cash"
                         style="@style/tab05_tv_style"
-                        android:text="余额" />
+                        android:text="认证" />
                 </LinearLayout>
 
                 <TextView
@@ -359,15 +362,22 @@
             <LinearLayout
                 android:id="@+id/tab05_ibtn_request_my"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:background="@drawable/btn_bg_white_rect"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/my_request" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
+
                     android:text="我的需求"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/text_large" />
@@ -393,15 +403,21 @@
             <LinearLayout
                 android:id="@+id/tab05_ibtn_request_ta"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:background="@drawable/btn_bg_white_rect"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/their_request" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
                     android:text="Ta的需求"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/text_large" />
@@ -431,15 +447,22 @@
             <LinearLayout
                 android:id="@+id/tab05_ibtn_verify"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
+                android:visibility="gone"
                 android:background="@drawable/btn_bg_white_rect"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/person_identification" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
                     android:text="个人认证"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/text_large" />
@@ -465,15 +488,21 @@
             <LinearLayout
                 android:id="@+id/tab05_ibtn_phone"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:background="@drawable/btn_bg_white_rect"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/custom_service" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
                     android:text="联系客服"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/text_large" />
@@ -499,15 +528,21 @@
             <LinearLayout
                 android:id="@+id/tab05_ibtn_set"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:background="@drawable/btn_bg_white_rect"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/mine_setting" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
                     android:text="设  置"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/text_large" />

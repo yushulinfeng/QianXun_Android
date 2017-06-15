@@ -46,7 +46,7 @@
                         android:layout_gravity="right|center_vertical"
                         android:background="@null"
                         android:checked="true"
-                        android:textColor="@color/light_blue"
+                        android:textColor="@color/main_yellow"
                         android:textOff="已关闭"
                         android:textOn="已开启" />
                 </FrameLayout>
@@ -79,7 +79,7 @@
                         android:layout_gravity="right|center_vertical"
                         android:background="@null"
                         android:checked="true"
-                        android:textColor="@color/light_blue"
+                        android:textColor="@color/main_yellow"
                         android:textOff="已关闭"
                         android:textOn="已开启" />
                 </FrameLayout>
@@ -111,7 +111,7 @@
                         android:layout_gravity="right|center_vertical"
                         android:background="@null"
                         android:checked="true"
-                        android:textColor="@color/light_blue"
+                        android:textColor="@color/main_yellow"
                         android:textOff="已关闭"
                         android:textOn="已开启" />
                 </FrameLayout>
@@ -161,12 +161,14 @@
                     android:padding="10dp"
                     android:text="意见反馈"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1px"
-                    android:background="@color/msg_info_divider" />
+                    android:background="@color/msg_info_divider"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/tab05_btn_cleancache"

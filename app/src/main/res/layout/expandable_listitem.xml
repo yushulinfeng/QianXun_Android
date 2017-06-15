@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:text="酬劳："
-                android:textColor="#e68379" />
+                android:textColor="@color/main_yellow" />
 
             <TextView
                 android:layout_width="wrap_content"
