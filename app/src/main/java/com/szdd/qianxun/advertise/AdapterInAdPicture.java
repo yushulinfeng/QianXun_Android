@@ -2,12 +2,12 @@ package com.szdd.qianxun.advertise;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -73,7 +73,9 @@ public class AdapterInAdPicture extends RecyclerView.Adapter<AdapterInAdPicture.
         final String picture_url = (String) mapList.get(i).get("comment_picture");//图片地址
         final String user_icon_url = (String) mapList.get(i).get("user_icon");//头像
         pv.comment_id = (Long) mapList.get(i).get("comment_id");//交易Id或动态id
-        pv.name.setText((String) mapList.get(i).get("comment_context"));//标题
+        String title = (String) mapList.get(i).get("comment_context");
+        if (TextUtils.isEmpty(title)) title = "【用户分享】";
+        pv.name.setText(title);//标题
         pv.user_id = (Long) mapList.get(i).get("user_id");//发单人id或发动态人id
         StaticMethod.UBITMAP(picture_url, pv.btn_image);
         StaticMethod.UBITMAPHEAD(user_icon_url, pv.head);
@@ -114,14 +116,12 @@ public class AdapterInAdPicture extends RecyclerView.Adapter<AdapterInAdPicture.
         public long comment_id;
         public TextView name;
         public long user_id;
-        public FrameLayout frame;
 
         public PictureView(final View view) {
             super(view);
-            frame = (FrameLayout) view.findViewById(R.id.ad_picture_frame);
             btn_image = (ImageView) view.findViewById(R.id.ad_picture_btn_image);//图片
             name = (TextView) view.findViewById(R.id.ad_picture_name);//图片名
-            name.setBackgroundResource(getShape());
+            //name.setBackgroundResource(getShape());
             head = (ImageView) view.findViewById(R.id.ad_picture_item_head);//头像
             //跳转个人主页
             head.setOnClickListener(new View.OnClickListener() {

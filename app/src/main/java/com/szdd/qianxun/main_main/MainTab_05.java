@@ -28,7 +28,6 @@ import com.szdd.qianxun.more.MyPublish;
 import com.szdd.qianxun.more.RequestMy;
 import com.szdd.qianxun.more.RequestTa;
 import com.szdd.qianxun.more.UserVerify;
-import com.szdd.qianxun.sell.CashBalanceActivity;
 import com.szdd.qianxun.sell.orders.SellAllOrderBuy;
 import com.szdd.qianxun.sell.orders.SellAllOrderSell;
 import com.szdd.qianxun.tools.bitmap.MultiBitmapTool;
@@ -241,7 +240,7 @@ public class MainTab_05 extends Fragment implements OnClickListener {
                     showToast("离线状态不能查看");
                     return;
                 }
-                intent = new Intent(getActivity(), CashBalanceActivity.class);
+                intent = new Intent(getActivity(), UserVerify.class);//CashBalanceActivity
                 break;
         }
         if (intent != null)

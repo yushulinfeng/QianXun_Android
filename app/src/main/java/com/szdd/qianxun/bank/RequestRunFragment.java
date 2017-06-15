@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.szdd.qianxun.main_main.MainTab_03;
+import com.szdd.qianxun.message.baichuan.util.AppUtil;
 import com.szdd.qianxun.tools.all.StaticMethod;
 import com.szdd.qianxun.tools.connect.ConnectDialog;
 import com.szdd.qianxun.tools.connect.ConnectList;
@@ -27,6 +28,8 @@ public class RequestRunFragment extends RequestAllFragment {
     // 后台交互
     private String url = ServerURL.LOCAL_REQUEST_TYPE_URL;
     private String res = "";
+    //LBS派单修正
+    private int last_count = -1;
 
     public RequestRunFragment() {
         super();
@@ -38,7 +41,7 @@ public class RequestRunFragment extends RequestAllFragment {
         try {
             JSONObject jsonobject = new JSONObject(res);
             JSONArray jsonArray = jsonobject.getJSONArray("list");
-            page = jsonArray.getJSONObject(jsonArray.length()-1).getInt("id");
+            page = jsonArray.getJSONObject(jsonArray.length() - 1).getInt("id");
         } catch (org.json.JSONException e) {
             e.printStackTrace();
         }
@@ -53,7 +56,7 @@ public class RequestRunFragment extends RequestAllFragment {
     }
 
     public void updateDataFromNet(final int page_temp, final int type_temp) {
-        is_update=true;
+        is_update = true;
         com.szdd.qianxun.tools.map.Location.getLocation(getActivity(),
                 new LocationListener() {
                     @Override
@@ -72,7 +75,7 @@ public class RequestRunFragment extends RequestAllFragment {
 //                    dialog.config(getActivity(), "正在连接", "请稍后……", true);
 //                    return dialog;
 //                } else {
-                    return null;
+                return null;
 //                }
             }
 
@@ -108,6 +111,7 @@ public class RequestRunFragment extends RequestAllFragment {
                             MainTab_03.Analysis(getActivity(), response, requestlistItems);
                             res = response;
                             updateList();
+                            last_count = requestlistItems.size();
                         }
                     } else {
                         if (response.equals("failed")) {
@@ -118,11 +122,20 @@ public class RequestRunFragment extends RequestAllFragment {
                             MainTab_03.Analysis(getActivity(), response, requestlistItems);
                             res = response;
                             updateList();
+                            //For LBS
+                            if (requestlistItems != null) {
+                                int now_add = requestlistItems.size() - last_count;
+                                if (now_add == 1) {
+                                    String title = (String) requestlistItems.get(0).get("request_key");
+                                    AppUtil.sendNote("附近需求：" + title, "立即去抢单！", null, null);
+                                }
+                                last_count = requestlistItems.size();
+                            }
                         }
 
                     }
                 }
-                is_update=false;
+                is_update = false;
             }
         });
     }

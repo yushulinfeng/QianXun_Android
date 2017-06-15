@@ -44,7 +44,6 @@ public class MainTabAdd extends Activity implements OnClickListener {
     }
 
     private void initView() {
-        Button btn_add_sell = (Button) findViewById(R.id.tab_add_btn_request);
         Button btn_add_show = (Button) findViewById(R.id.tab_add_btn_show);
         Button btn_cancel = (Button) findViewById(R.id.tab_add_btn_cancel);
 
@@ -54,8 +53,24 @@ public class MainTabAdd extends Activity implements OnClickListener {
         animation.setInterpolator(new DecelerateInterpolator());
         btn_cancel.startAnimation(animation);
 
-        startAnimation(btn_add_sell, -666f);//虽然这样写不太好
-        startAnimation(btn_add_show, -490f);//btn_all_request
+        //showButton();
+        Button btn_add_sell = (Button) findViewById(R.id.tab_add_btn_show2);
+        Button btn_all_request = (Button) findViewById(R.id.tab_add_btn_request2);
+        btn_add_sell.setOnClickListener(this);
+        btn_all_request.setOnClickListener(this);
+        RotateAnimation animation2 = new RotateAnimation(0f, 720f, Animation.RELATIVE_TO_SELF,
+                0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        animation2.setDuration(500);//设置动画持续时间
+        animation2.setInterpolator(new DecelerateInterpolator());
+        btn_add_sell.startAnimation(animation2);
+        btn_all_request.startAnimation(animation2);
+
+
+        //动画太难看了，此处小动画
+//        Button btn_add_sell = (Button) findViewById(R.id.tab_add_btn_request);
+//        startAnimation(btn_add_sell, -666f);//虽然这样写不太好
+//        startAnimation(btn_add_show, -490f);//btn_all_request
+
 //        startAnimation(btn_add_sell, l1, true, 45f);
 //        startAnimation(btn_add_show, l2, true, -45f);//btn_all_request
         //startAnimation(btn_add_show, l3, false, 0);
@@ -74,7 +89,7 @@ public class MainTabAdd extends Activity implements OnClickListener {
                 startMyActivity(PostRequest.class);
                 break;
             case R.id.tab_add_btn_show2:
-//                startMyActivity(PostDynamic.class);
+                startMyActivity(PostDynamic.class);
                 break;
             case R.id.tab_add_btn_cancel:
             case R.id.tab_add_layout:

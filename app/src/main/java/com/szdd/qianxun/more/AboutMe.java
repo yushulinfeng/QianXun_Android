@@ -5,7 +5,6 @@ import android.content.pm.PackageManager;
 import android.widget.TextView;
 
 import com.szdd.qianxun.R;
-import com.szdd.qianxun.message.msg_tool.ParamTool;
 import com.szdd.qianxun.tools.top.TActivity;
 
 import butterknife.Bind;
@@ -26,7 +25,6 @@ public class AboutMe extends TActivity {
         showBackButton();
         initView();
         initActionBar(getResources().getColor(R.color.topbar_bg));
-
     }
 
     private void initView() {
@@ -36,9 +34,9 @@ public class AboutMe extends TActivity {
             moreVeesion.setText("软件版本：v" + name);
         } catch (PackageManager.NameNotFoundException e) {
         }
-        String time = ParamTool.getParam("version_time");
-        if (!time.equals(""))
-            moreTime.setText(time);
+//        String time = ParamTool.getParam("version_time");
+//        if (!time.equals(""))
+//            moreTime.setText(time);
     }
 
     @Override

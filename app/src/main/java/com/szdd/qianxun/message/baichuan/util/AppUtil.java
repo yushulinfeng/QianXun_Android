@@ -140,17 +140,20 @@ public class AppUtil {
         mNotification.flags = Notification.FLAG_AUTO_CANCEL;// 点击清除
         if (TextUtils.isEmpty(note_title))
             note_title = ctx.getString(R.string.app_name);
-        Intent intent = new Intent();
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
-                | Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.setClassName(ctx.getPackageName(), cls.getName());
-        if (note_extra != null)
-            intent.putExtra("note_extra", note_extra);
-        PendingIntent mPendIntent = PendingIntent.getActivity(ctx, 0, intent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-        mNotification.when = System.currentTimeMillis(); // 当前时间 ，通知时间
+        PendingIntent mPendIntent = null;
+        if (cls != null) {
+            Intent intent = new Intent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setClassName(ctx.getPackageName(), cls.getName());
+            if (note_extra != null)
+                intent.putExtra("note_extra", note_extra);
+            mPendIntent = PendingIntent.getActivity(ctx, 0, intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
+        }
         mNotification.setLatestEventInfo(ctx, note_title, note_text,
                 mPendIntent);
+        mNotification.when = System.currentTimeMillis(); // 当前时间 ，通知时间
         mNotificationManager.notify(1, mNotification);
     }
 

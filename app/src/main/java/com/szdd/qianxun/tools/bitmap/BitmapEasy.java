@@ -11,12 +11,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.Volley;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.szdd.qianxun.R;
-import com.szdd.qianxun.main_main.QianxunApplication;
+import com.szdd.qianxun.main_main.MyApplication;
 
 import java.io.IOException;
 
 public class BitmapEasy extends AsyncTask<Void, Void, Bitmap> {
+    public static DisplayImageOptions mOptions;
+    public static DisplayImageOptions mHeadOptions;
+
     private String url;
     private BitmapListener listener;
 
@@ -51,7 +55,7 @@ public class BitmapEasy extends AsyncTask<Void, Void, Bitmap> {
     public static void GET(String url, BitmapListener listener) {
 //        BitmapEasy connect = new BitmapEasy(url, listener);
 //        connect.execute();
-        BITMAP(QianxunApplication.getInstance(), url, listener);
+        BITMAP(MyApplication.getInstance(), url, listener);
     }
 
     //////////////////////////////////////////////////////////
@@ -203,7 +207,7 @@ public class BitmapEasy extends AsyncTask<Void, Void, Bitmap> {
     public static void clearBitmapCache() {
         try {
             DiskLruCache.deleteContents(ImageCacheUtil.getDiskCacheDir(
-                    QianxunApplication.getInstance(), ImageCacheUtil.mCachePath));
+                    MyApplication.getInstance(), ImageCacheUtil.mCachePath));
         } catch (IOException e) {
         }
     }

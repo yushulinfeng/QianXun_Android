@@ -11,7 +11,7 @@ import android.support.v4.util.LruCache;
 import android.util.Log;
 
 import com.android.volley.toolbox.ImageLoader.ImageCache;
-import com.szdd.qianxun.main_main.QianxunApplication;
+import com.szdd.qianxun.main_main.MyApplication;
 import com.szdd.qianxun.tools.file.PassTool;
 
 import java.io.File;
@@ -48,8 +48,8 @@ public class ImageCacheUtil implements ImageCache {
         try {
             // 获取DiskLruCahce对象
             mDiskLruCache = DiskLruCache.open(getDiskCacheDir(
-                            QianxunApplication.getInstance(), mCachePath),
-                    getAppVersion(QianxunApplication.getInstance()),
+                            MyApplication.getInstance(), mCachePath),
+                    getAppVersion(MyApplication.getInstance()),
                     1, DISKMAXSIZE);
         } catch (IOException e) {
             e.printStackTrace();

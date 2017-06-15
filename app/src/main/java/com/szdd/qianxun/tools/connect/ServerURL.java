@@ -140,7 +140,7 @@ public class ServerURL {
     // 发动态
     public static final String POST_DYNAMIC = "dynamic_save.action";
     //广告台图文区一级界面动态
-    public static final String DYNAMIC_GET_BRIEF = "dynamic_getBriefByPage.action";
+    public static final String DYNAMIC_GET_BRIEF = "dynamic_getBriefByPage2.action";
     //获得动态详情
     public static final String GET_DYNAMIC_DETAIL = "dynamic_getById.action";
     //动态顶
@@ -171,7 +171,7 @@ public class ServerURL {
     public static final String ALTER_HEADICON = "user_updateUserHeadIcon.action";
 
     //首页顶部
-    public static final String FIRST_PAGE_TOP = "prop_getMainPageImages.action";
+    public static final String FIRST_PAGE_TOP = "prop_getMainPageImages2.action";
     //首页中部
     public static final String FIRST_PAGE_CENTER = "prop_getSmallImages.action";
 

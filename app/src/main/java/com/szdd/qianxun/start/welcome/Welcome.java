@@ -55,6 +55,8 @@ public class Welcome extends NetActivity {
         setContentView(R.layout.start_welcome);
         ButterKnife.bind(this);
 
+        postRun();
+        /*
         getMessage();
         loadFirstImg();
         startNewThread();
@@ -64,6 +66,7 @@ public class Welcome extends NetActivity {
                 postRun();
             }
         }, 1000);// 时间可以慢慢调整
+        */
     }
 
     private void postRun() {
@@ -251,12 +254,14 @@ public class Welcome extends NetActivity {
             public void onResponse(String response) {
                 ConnectSign.dealTimeSpace(response);//内部已处理
 
-                if (UserTool.isFirstRun(Welcome.this)) {
-                    startActivity(new Intent(Welcome.this, FirstRun.class));
-                    finish();
-                } else {
-                    autoLogin();
-                }
+                autoLogin();
+//                //千寻项目，取消首次运行的欢迎界面
+//                if (UserTool.isFirstRun(Welcome.this)) {
+//                    startActivity(new Intent(Welcome.this, FirstRun.class));
+//                    finish();
+//                } else {
+//                    autoLogin();
+//                }
             }
         });
     }
